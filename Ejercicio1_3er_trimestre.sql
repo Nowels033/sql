@@ -174,26 +174,108 @@ SELECT @nota;
 represente un día de la semana y que devuelva una cadena de caracteres con el nombre del día de
 la semana correspondiente.
 Por ejemplo, para el valor de entrada 1 debería devolver la cadena lunes.
+
+
+DELIMITER $$
+DROP PROCEDURE IF EXISTS dias$$
+CREATE PROCEDURE dias (in numero real)
+BEGIN
+
+
+case numero
+when numero = 1 
+	THEN select "lunes" ;
+    when  2  THEN
+		select "martes" ;
+      when 3 THEN
+      select "miercoles" ;
+       when 4 THEN
+       select "jueves" ;
+        when  5 THEN
+      select "viernes" ;
+      when  5 THEN
+      select "sabado" ;
+      when  7 THEN
+      select "domingo" ;
+       else 
+        select "ese numero no pertenece a un dia de la semana" ;
+	end case;
+END
+$$
+DELIMITER ;
+call dias(5);
+call dias(1);
+call dias(2);
+call dias(3);
+
+
 Triggers, procedimientos y funciones en
 MySQL1.8.2 Procedimientos con sentencias SQL
+
 1. Escribe un procedimiento que reciba el nombre de un país como parámetro de entrada y realice
 una consulta sobre la tabla cliente para obtener todos los clientes que existen en la tabla de ese
 país.
+
+DELIMITER $$
+DROP PROCEDURE IF EXISTS pais$$
+CREATE PROCEDURE pais (in pais2 VARCHAR(30))
+BEGIN
+
+SELECT nombre_cliente from cliente where cliente.pais=pais2;
+
+END
+$$
+DELIMITER ;
+
+call pais("usa");
+
+
 2. Escribe un procedimiento que reciba como parámetro de entrada una forma de pago, que será
 una cadena de caracteres (Ejemplo: PayPal, Transferencia, etc). Y devuelva como salida el pago de
 máximo valor realizado para esa forma de pago. Deberá hacer uso de la tabla pago de la base de
 datos jardinería.
+
+DELIMITER $$
+drop procedure if exists pago$$
+create procedure pago (in forma_pago varchar(30), out max_pago int)
+begin
+	SELECT MAX(p.total) into max_pago
+	FROM pago as p
+	WHERE p.forma_pago = forma_pago;
+end$$
+
+delimiter ;
+call pago("PayPal", @max_pago);
+SELECT @max_pago;
+
 3. Escribe un procedimiento que reciba como parámetro de entrada una forma de pago, que será
 una cadena de caracteres (Ejemplo: PayPal, Transferencia, etc). Y devuelva como salida los
 siguientes valores teniendo en cuenta la forma de pago seleccionada como parámetro de entrada:
 • el pago de máximo valor,
 • el pago de mínimo valor,
-Triggers, procedimientos y funciones en
-MySQL1.8.2 Procedimientos con sentencias SQL
+
+
 • el valor medio de los pagos realizados,
 • la suma de todos los pagos,
 • el número de pagos realizados para esa forma de pago.
 Deberá hacer uso de la tabla pago de la base de datos jardineria.
+
+
+DELIMITER $$
+drop procedure if exists pago2$$
+create procedure pago2 (in forma_pago varchar(30), out max_pago int,out min_pago int,out media double,out suma double,out total double)
+begin
+	SELECT MAX(p.total),min(p.total),avg(p.total),sum(p.total),count(p.total)
+	FROM pago as p
+	WHERE p.forma_pago = forma_pago
+    into max_pago,min_pago,media,suma,total;
+end$$
+
+delimiter ;
+call pago2("PayPal", @max_pago,@min_pago,@media,@suma,@total);
+SELECT @max_pago,@min_pago,@media,@suma,@total;
+
+
 4. Crea una base de datos llamada procedimientos que contenga una tabla llamada cuadrados. La
 tabla cuadrados debe tener dos columnas de tipo INT UNSIGNED, una columna llamada número y
 otra columna llamada cuadrado.
@@ -202,11 +284,35 @@ calcular_cuadrados con las siguientes características. El procedimiento recibe 
 entrada llamado tope de tipo INT UNSIGNED y calculará el valor de los cuadrados de los primeros
 números naturales hasta el valor introducido como parámetro. El valor del números y de sus
 cuadrados deberán ser almacenados en la tabla cuadrados que hemos creado previamente.
-Triggers, procedimientos y funciones en
-MySQL1.8.2 Procedimientos con sentencias SQL
 Tenga en cuenta que el procedimiento deberá eliminar el contenido actual de la tabla antes de
 insertar los nuevos valores de los cuadrados que va a calcular.
 Utilice un bucle WHILE para resolver el procedimiento.
+
+DROP DATABASE IF EXISTS Procedimientos;
+CREATE DATABASE Procedimientos;
+USE Procedimientos;
+
+CREATE TABLE cuadros (
+    numero INT UNSIGNED,
+    cuadrado INT UNSIGNED
+);
+
+
+DELIMITER $$
+drop procedure if exists calcular_cuadrados;
+create procedure calcular_cuadrados(tope INT UNSIGNED)
+begin
+	DECLARE i INTEGER DEFAULT 1;
+	Truncate table cuadros;
+	while (i <= tope) DO
+		INSERT INTO  cuadros VALUES (i, i*i);
+		SET i = i+1;
+	end while;
+end$$
+DELIMITER ;
+
+call calcular_cuadrados(100);
+
 5. Utilice un bucle REPEAT para resolver el procedimiento del ejercicio anterior.
 6. Utilice un bucle LOOP para resolver el procedimiento del ejercicio anterior.
 7. Crea una base de datos llamada procedimientos que contenga una tabla llamada ejercicio. La
