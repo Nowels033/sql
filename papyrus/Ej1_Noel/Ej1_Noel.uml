@@ -13,7 +13,7 @@
     <ownedAttribute xmi:type="uml:Property" xmi:id="_eCrkgPfxEe6M1PzjcYEVqQ" name="direccion">
       <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
     </ownedAttribute>
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_hTQkcPfxEe6M1PzjcYEVqQ" name="Property4">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_hTQkcPfxEe6M1PzjcYEVqQ" name="telefono">
       <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
     </ownedAttribute>
   </packagedElement>
