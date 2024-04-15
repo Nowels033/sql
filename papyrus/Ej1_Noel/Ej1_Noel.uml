@@ -35,10 +35,10 @@
     <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_ouhcIPfxEe6M1PzjcYEVqQ" source="org.eclipse.papyrus">
       <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_ouiqQPfxEe6M1PzjcYEVqQ" key="nature" value="UML_Nature"/>
     </eAnnotations>
-    <ownedEnd xmi:type="uml:Property" xmi:id="_oux60PfxEe6M1PzjcYEVqQ" name="habitacion" type="_lDTHkPfxEe6M1PzjcYEVqQ" association="_oucjoPfxEe6M1PzjcYEVqQ"/>
-    <ownedEnd xmi:type="uml:Property" xmi:id="_ouj4YPfxEe6M1PzjcYEVqQ" name="hotel" type="_J3uuIPfxEe6M1PzjcYEVqQ" aggregation="composite" association="_oucjoPfxEe6M1PzjcYEVqQ">
-      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_3IrYkPfxEe6M1PzjcYEVqQ" value="*"/>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_oux60PfxEe6M1PzjcYEVqQ" name="habitacion" type="_lDTHkPfxEe6M1PzjcYEVqQ" aggregation="composite" association="_oucjoPfxEe6M1PzjcYEVqQ">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_7GtmcPtJEe6eVLpX68bQSQ" value="*"/>
     </ownedEnd>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_ouj4YPfxEe6M1PzjcYEVqQ" name="hotel" type="_J3uuIPfxEe6M1PzjcYEVqQ" association="_oucjoPfxEe6M1PzjcYEVqQ"/>
   </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="_uzNF8PfyEe6M1PzjcYEVqQ" name="Cliente">
     <ownedAttribute xmi:type="uml:Property" xmi:id="_z1i-cPfyEe6M1PzjcYEVqQ" name="numero_cliente">
