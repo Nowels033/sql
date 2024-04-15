@@ -314,28 +314,128 @@ DELIMITER ;
 call calcular_cuadrados(100);
 
 5. Utilice un bucle REPEAT para resolver el procedimiento del ejercicio anterior.
+
+
+DELIMITER $$
+drop procedure if exists calcular_cuadrados_repeat;
+create procedure calcular_cuadrados_repeat(tope INT UNSIGNED)
+begin
+	
+	DECLARE i INTEGER DEFAULT 1;
+	DELETE FROM cuadros;
+	REPEAT
+		INSERT INTO  cuadros VALUES (i, i*i);
+		SET i = i+1;
+	UNTIL (i > tope)
+	END REPEAT;
+end$$
+DELIMITER ;
+
+call calcular_cuadrados_repeat(100);
+
 6. Utilice un bucle LOOP para resolver el procedimiento del ejercicio anterior.
+
+
+DELIMITER $$
+drop procedure if exists calcular_cuadrados_loop;
+create procedure calcular_cuadrados_loop(tope INT UNSIGNED)
+begin
+	DECLARE i INTEGER DEFAULT 1;
+	TRUNCATE cuadros;
+	loop_cuadrado: LOOP
+		IF (i > tope) THEN
+			LEAVE loop_cuadrado;
+		END IF;
+		INSERT INTO  cuadros VALUES (i, i*i);
+		SET i = i+1;
+	END LOOP;
+end$$
+DELIMITER ;
+
+call calcular_cuadrados_loop(7);
+
+
+
 7. Crea una base de datos llamada procedimientos que contenga una tabla llamada ejercicio. La
 tabla debe tener una única columna llamada número y el tipo de dato de esta columna debe ser
 INT UNSIGNED.
+
 Una vez creada la base de datos y la tabla deberá crear un procedimiento llamado
 calcular_números con las siguientes características. El procedimiento recibe un parámetro de
 entrada llamado valor_inicial de tipo INT UNSIGNED y deberá almacenar en la tabla ejercicio toda
 la secuencia de números desde el valor inicial pasado como entrada hasta el 1.
-Triggers, procedimientos y funciones en
-MySQL1.8.2 Procedimientos con sentencias SQL
+
 Tenga en cuenta que el procedimiento deberá eliminar el contenido actual de las tablas antes de
 insertar los nuevos valores.
 Utilice un bucle WHILE para resolver el procedimiento.
+
+
+CREATE TABLE ejercicio (
+    numero INT UNSIGNED
+);
+
+DELIMITER $$
+drop procedure if exists calcular_numeros_while;
+create procedure calcular_numeros_while(tope INT UNSIGNED)
+begin
+	DECLARE i int default tope ;
+   
+	Truncate table ejercicio;
+	while (i >= 1) DO
+		INSERT INTO  ejercicio VALUES (i);
+		SET i = i-1;
+	end while;
+end$$
+DELIMITER ;
+
+call calcular_numeros_while(100);
+
+
 8. Utilice un bucle REPEAT para resolver el procedimiento del ejercicio anterior.
+
+
+DELIMITER $$
+drop procedure if exists calcular_numeros_repeat;
+create procedure calcular_numeros_repeat(tope INT UNSIGNED)
+begin
+	DECLARE i INTEGER DEFAULT tope;
+	DELETE FROM ejercicio;
+	REPEAT
+		INSERT INTO  ejercicio VALUES (i);
+		SET i = i-1;
+	UNTIL (i < 1)
+	END REPEAT;
+end$$
+DELIMITER ;
+
+call calcular_numeros_repeat(20);
+
+
 9. Utilice un bucle LOOP para resolver el procedimiento del ejercicio anterior.
+
+DELIMITER $$
+drop procedure if exists calcular_numeros_loop;
+create procedure calcular_numeros_loop(tope INT UNSIGNED)
+begin
+	DECLARE i INTEGER DEFAULT tope;
+	TRUNCATE ejercicio;
+	loop_numero: LOOP
+		IF (i < 1) THEN
+			LEAVE loop_numero;
+		END IF;
+		INSERT INTO  ejercicio VALUES (i);
+		SET i = i-1;
+	END LOOP;
+end$$
+DELIMITER ;
+
+call calcular_numeros_loop(20);
+
 10. Crea una base de datos llamada procedimientos que contenga una tabla llamada pares y otra
 tabla llamada impares. Las dos tablas deben tener única columna llamada número y el tipo de dato
 de esta columna debe ser INT UNSIGNED.
 Una vez creada la base de datos y las tablas deberá crear un procedimiento llamado
 calcular_pares_impares con las siguientes características.
-Triggers, procedimientos y funciones en
-MySQL1.8.2 Procedimientos con sentencias SQL
 El procedimiento recibe un parámetro de entrada llamado tope de tipo INT UNSIGNED y deberá
 almacenar en la tabla pares aquellos números pares que existan entre el número 1 el valor
 introducido como parámetro. Habrá que realizar la misma operación para almacenar los números
@@ -343,14 +443,135 @@ impares en la tabla impares.
 Tenga en cuenta que el procedimiento deberá eliminar el contenido actual de las tablas antes de
 insertar los nuevos valores.
 Utilice un bucle WHILE para resolver el procedimiento.
+
+
+CREATE TABLE pares (
+    numero INT UNSIGNED
+);
+
+CREATE TABLE impares (
+    numero INT UNSIGNED
+);
+drop table pares,impares;
+DELIMITER $$
+drop procedure if exists calcular_pares_impares_while$$
+create procedure calcular_pares_impares_while(tope INT UNSIGNED)
+begin
+	DECLARE i int default 1 ;
+   
+	Truncate  pares;
+    truncate impares;
+    
+	while (i <= tope) DO
+    
+    if i%2=0 then
+		INSERT INTO  pares VALUES (i);
+        else
+        INSERT INTO  impares VALUES (i);
+        end if;
+		SET i = i+1;
+	end while;
+end$$
+DELIMITER ;
+
+
+
+call calcular_pares_impares_while(100);
+
+
 11. Utilice un bucle REPEAT para resolver el procedimiento del ejercicio anterior.
+
+delimiter $$
+drop procedure if exists calcular_pares_impares_repeat$$
+create procedure calcular_pares_impares_repeat(tope INT UNSIGNED)
+begin
+	DECLARE i int default 1 ;
+   
+	Truncate  pares;
+    truncate impares;
+    
+	REPEAT
+		IF(i%2 = 0) THEN
+			INSERT INTO  pares VALUES (i);
+		ELSE
+			INSERT INTO  impares VALUES (i);
+		END IF;
+		SET i = i + 1;
+	UNTIL (i > tope)
+	END REPEAT;
+end$$
+DELIMITER ;
+
+
+
+call calcular_pares_impares_repeat(100);
+
+
 12. Utilice un bucle LOOP para resolver el procedimiento del ejercicio anterior.
-Triggers, procedimientos y funciones en
-MySQL1.8.3 Funciones sin sentencias SQL
+
+
+
+delimiter $$
+drop procedure if exists calcular_pares_impares_loop$$
+create procedure calcular_pares_impares_loop(tope INT UNSIGNED)
+begin
+	DECLARE i int default 1 ;
+   
+	Truncate  pares;
+    truncate impares;
+    
+	ins_loop: LOOP
+		IF(i > tope) THEN
+			LEAVE ins_loop;
+		END IF;
+		IF(i%2 = 0) THEN
+			INSERT INTO  pares VALUES (i);
+		ELSE
+			INSERT INTO  impares VALUES (i);
+		END IF;
+		SET i = i + 1;
+	END LOOP;
+end$$
+DELIMITER ;
+
+
+
+call calcular_pares_impares_loop(50);
+
+
+
 1. Escribe una función que reciba un número entero de entrada y devuelva TRUE si el número
 es par o FALSE en caso contrario.
+
+
+delimiter $$
+drop FUNCTION if exists calcular_pares_impares$$
+create FUNCTION calcular_pares_impare(tope INT UNSIGNED)
+returns boolean 
+begin
+
+
+	if tope%2=0 then
+    return true;
+    else RETURN false;
+    end if;
+    
+	
+end$$
+DELIMITER ;
+
+
+
+call calcular_pares_impares_loop(50);
+
+set GLOBAL log_bin_trust_func
 2. Escribe una función que devuelva el valor de la hipotenusa de un triángulo a partir de los
 valores de sus lados.
+
+
+
+
+
 3. Escribe una función que reciba como parámetro de entrada un valor numérico que
 represente un día de la semana y que devuelva una cadena de caracteres con el nombre del
 día de la semana correspondiente.
