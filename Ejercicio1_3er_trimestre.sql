@@ -513,7 +513,7 @@ call calcular_pares_impares_repeat(100);
 
 delimiter $$
 drop procedure if exists calcular_pares_impares_loop$$
-create procedure calcular_pares_impares_loop(tope INT UNSIGNED)
+create procedure calcular_pares_impares_loop(in tope INT UNSIGNED)
 begin
 	DECLARE i int default 1 ;
    
@@ -546,7 +546,7 @@ es par o FALSE en caso contrario.
 
 delimiter $$
 drop FUNCTION if exists calcular_pares_impares$$
-create FUNCTION calcular_pares_impare(tope INT UNSIGNED)
+create FUNCTION calcular_pares_impares(tope INT UNSIGNED)
 returns boolean 
 begin
 
@@ -562,13 +562,32 @@ DELIMITER ;
 
 
 
-call calcular_pares_impares_loop(50);
+select calcular_pares_impares(3);
 
-set GLOBAL log_bin_trust_func
+-- cambiar sql function
+set global log_bin_trust_function_creators = 1
+
+
+
 2. Escribe una función que devuelva el valor de la hipotenusa de un triángulo a partir de los
 valores de sus lados.
 
+delimiter $$
+drop FUNCTION if exists hipotenusa $$
+create FUNCTION hipotenusa(hipotenusa1 INT UNSIGNED, hipotenusa2 int unsigned)
+returns double 
+begin
 
+
+	RETURN sqrt((hipotenusa1*hipotenusa1) + (hipotenusa2*hipotenusa2));
+    
+	
+end$$
+DELIMITER ;
+
+
+
+select hipotenusa(3,5);
 
 
 
@@ -576,12 +595,73 @@ valores de sus lados.
 represente un día de la semana y que devuelva una cadena de caracteres con el nombre del
 día de la semana correspondiente.
 Por ejemplo, para el valor de entrada 1 debería devolver la cadena lunes.
+
+
+
+delimiter $$
+drop FUNCTION if exists dia_semana $$
+create FUNCTION dia_semana(dia INT UNSIGNED)
+returns VARCHAR(30) 
+begin
+
+	case
+		when dia = 1 then return "lunes";
+        when dia = 2 then return "martes";
+        when dia = 3 then return "miercoles";
+        when dia = 4 then return "jueves";
+        when dia = 5 then return "viernes";
+        when dia = 6 then return "sabado";
+        when dia = 7 then return "domingo";
+        when dia < 1 or dia > 7 then return "parametro entrada no valido";
+    end case;
+end$$
+DELIMITER ;
+
+
+
+select dia_semana(1),dia_semana(2),dia_semana(3),dia_semana(4),dia_semana(5),dia_semana(6),dia_semana(7);
+
+
 4. Escribe una función que reciba tres números reales como parámetros de entrada y
 devuelva el mayor de los tres.
+
+
+delimiter $$
+drop FUNCTION if exists numero_mayor $$
+create FUNCTION numero_mayor(num1 real,num2 real, num3 real)
+returns real
+begin
+
+	if num1>num2 and num1>num3 then return num1;
+    ELSEIF num2>num1 and num2>num3 then return num2;
+    ELSE  return num3;
+    
+    end if;
+end$$
+DELIMITER ;
+
+select numero_mayor(5,2,4);
+select numero_mayor(2,6,3);
+select numero_mayor(2,1,3);
+
 5. Escribe una función que devuelva el valor del área de un círculo a partir del valor del radio
 que se recibirá como parámetro de entrada.
-Triggers, procedimientos y funciones en
-MySQL1.8.3 Funciones sin sentencias SQL
+
+delimiter $$
+drop FUNCTION if exists area_circulo $$
+create FUNCTION area_circulo(radio float)
+returns real
+begin
+
+	return (PI()*(radio*radio));
+    -- return (PI()*(pow(radio,2)))
+    
+   
+end$$
+DELIMITER ;
+
+select area_circulo(10);
+
 6. Escribe una función que devuelva como salida el número de años que han transcurrido
 entre dos fechas que se reciben como parámetros de entrada. Por ejemplo, si pasamos como
 parámetros de entrada las fechas 2018-01-01 y 2008-01-01 la función tiene que devolver que
@@ -590,15 +670,70 @@ Para realizar esta función puede hacer uso de las siguientes funciones que nos 
 MySQL:
 • DATEDIFF
 • TRUNCATE
+
+
+delimiter $$
+drop FUNCTION if exists diferencia_años $$
+create FUNCTION diferencia_años(anio1 date,anio2 date)
+returns INT
+begin
+
+	declare anio int;
+    set anio = datediff(anio1,anio2)/365;
+    RETURN truncate(anio,1);
+    
+   
+end$$
+DELIMITER ;
+
+select diferencia_años("2018-01-01" , "2008-01-01");
+
+
 7. Escribe una función que reciba una cadena de entrada y devuelva la misma cadena pero
 sin acentos. La función tendrá que reemplazar todas las vocales que tengan acento por la
 misma vocal pero sin acento.
 Por ejemplo, si la función recibe como parámetro de entrada la cadena María la función debe
 devolver la cadena Maria.
-Triggers, procedimientos y funciones en
-MySQL1.8.4 Funciones con sentencias SQL
+
+
+delimiter $$
+drop FUNCTION if exists sin_acentos $$
+create FUNCTION sin_acentos(cadena varchar(50))
+returns varchar(50)
+begin
+
+	declare texto varchar(50);
+    set texto = cadena;
+    
+    
+    SET texto = replace(texto, 'á', 'a');
+	SET texto = replace(texto, 'é', 'e');
+	SET texto = replace(texto, 'í', 'i');
+	SET texto = replace(texto, 'ó', 'o');
+	SET texto = replace(texto, 'ú', 'u');
+    
+    SET texto = replace(texto, 'Á', 'A');
+	SET texto = replace(texto, 'É', 'E');
+	SET texto = replace(texto, 'Í', 'I');
+	SET texto = replace(texto, 'Ó', 'O');
+	SET texto = replace(texto, 'Ú', 'U');
+    
+	RETURN texto;
+    
+    
+   
+end$$
+DELIMITER ;
+
+select sin_acentos("ÁéÍóÚ");
+
 1. Escribe una función para la base de datos tienda que devuelva el número total de
 productos que hay en la tabla productos.
+
+
+
+
+
 2. Escribe una función para la base de datos tienda que devuelva el valor medio del precio de
 los productos de un determinado fabricante que se recibirá como parámetro de entrada. El
 parámetro de entrada será el nombre del fabricante.
