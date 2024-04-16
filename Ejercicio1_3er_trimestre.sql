@@ -574,8 +574,8 @@ valores de sus lados.
 
 delimiter $$
 drop FUNCTION if exists hipotenusa $$
-create FUNCTION hipotenusa(hipotenusa1 INT UNSIGNED, hipotenusa2 int unsigned)
-returns double 
+create FUNCTION hipotenusa(hipotenusa1 float, hipotenusa2 float)
+returns FLOAT 
 begin
 
 
@@ -650,7 +650,7 @@ que se recibirá como parámetro de entrada.
 delimiter $$
 drop FUNCTION if exists area_circulo $$
 create FUNCTION area_circulo(radio float)
-returns real
+returns FLOAT
 begin
 
 	return (PI()*(radio*radio));
@@ -679,8 +679,8 @@ returns INT
 begin
 
 	declare anio int;
-    set anio = datediff(anio1,anio2)/365;
-    RETURN truncate(anio,1);
+    set anio = datediff(anio1,anio2)/365.25;
+    RETURN truncate(anio,0);
     
    
 end$$
@@ -731,12 +731,32 @@ select sin_acentos("ÁéÍóÚ");
 productos que hay en la tabla productos.
 
 
+delimiter $$
+drop FUNCTION if exists total_productos $$
+create FUNCTION total_productos()
+returns INT
+begin
 
+declare total int;
+
+set total = (select count(id)from producto);
+
+return total;
+   
+end$$
+DELIMITER ;
+
+select total_productos();
 
 
 2. Escribe una función para la base de datos tienda que devuelva el valor medio del precio de
 los productos de un determinado fabricante que se recibirá como parámetro de entrada. El
 parámetro de entrada será el nombre del fabricante.
+
+
+
+
+
 3. Escribe una función para la base de datos tienda que devuelva el valor máximo del precio
 de los productos de un determinado fabricante que se recibirá como parámetro de entrada. El
 parámetro de entrada será el nombre del fabricante.
