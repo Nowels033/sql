@@ -754,17 +754,67 @@ los productos de un determinado fabricante que se recibirá como parámetro de e
 parámetro de entrada será el nombre del fabricante.
 
 
+delimiter $$
+drop FUNCTION if exists valor_medio_fabricante $$
+create FUNCTION valor_medio_fabricante(entrada_fabricante VARCHAR(20))
+returns double
+begin
 
+declare valor_medio DOUBLE;
+
+set valor_medio = (select avg(producto.precio) from producto,fabricante where producto.id_fabricante=fabricante.id and fabricante.nombre=entrada_fabricante);
+
+return valor_medio;
+   
+end$$
+DELIMITER ;
+
+select valor_medio_fabricante("Asus");
 
 
 3. Escribe una función para la base de datos tienda que devuelva el valor máximo del precio
 de los productos de un determinado fabricante que se recibirá como parámetro de entrada. El
 parámetro de entrada será el nombre del fabricante.
+
+
+delimiter $$
+drop FUNCTION if exists valor_max_fabricante $$
+create FUNCTION valor_max_fabricante(entrada_fabricante VARCHAR(20))
+returns double
+begin
+
+declare valor_max DOUBLE;
+
+set valor_max = (select max(producto.precio) from producto,fabricante where producto.id_fabricante=fabricante.id and fabricante.nombre=entrada_fabricante);
+
+return valor_max;
+   
+end$$
+DELIMITER ;
+
+select valor_max_fabricante("Asus");
+
 4. Escribe una función para la base de datos tienda que devuelva el valor mínimo del precio
 de los productos de un determinado fabricante que se recibirá como parámetro de entrada. El
 parámetro de entrada será el nombre del fabricante.
-Triggers, procedimientos y funciones en
-MySQL1.8.5 Manejo de errores en MySQL
+
+delimiter $$
+drop FUNCTION if exists valor_min_fabricante $$
+create FUNCTION valor_min_fabricante(entrada_fabricante VARCHAR(20))
+returns double
+begin
+
+declare valor_min DOUBLE;
+
+set valor_min = (select min(producto.precio) from producto,fabricante where producto.id_fabricante=fabricante.id and fabricante.nombre=entrada_fabricante);
+
+return valor_min;
+   
+end$$
+DELIMITER ;
+
+select valor_min_fabricante("Asus");
+
 1. Crea una base de datos llamada test que contenga una tabla llamada alumno. La tabla
 debe tener cuatro columnas:
 • id: entero sin signo (clave primaria).
@@ -778,8 +828,33 @@ procedimiento devolverá como salida un parámetro llamado error que tendrá un 
 0 si la operación se ha podido realizar con éxito y un valor igual a 1 en caso contrario.
 Deberá manejar los errores que puedan ocurrir cuando se intenta insertar una fila que
 contiene una clave primaria repetida.
-Triggers, procedimientos y funciones en
-MySQL1.8.6 Transacciones con procedimientos almacenados
+
+CREATE TABLE alumno (
+    id INT UNSIGNED,
+    nombre VARCHAR(50),
+    apellido1 VARCHAR(50),
+    apellido2 VARCHAR(50),
+    PRIMARY KEY(id)
+);
+
+delimiter $$
+drop procedure if exists insertar_alumno$$
+create procedure insertar_alumno(id INT UNSIGNED, nombre VARCHAR(50),
+    apellido1 VARCHAR(50), apellido2 VARCHAR(50))
+BEGIN
+	DECLARE error INT; 
+	DECLARE EXIT HANDLER FOR SQLSTATE '23000'
+	BEGIN
+		SET error = 1;
+		SELECT error;
+	END;
+	INSERT INTO  alumno VALUES (id, nombre, apellido1, apellido2);
+	SET error = 0;
+	SELECT error;
+END$$
+delimiter ;
+call insertar_alumno(2, 'Noel', 'dominguez', 'Serrano');
+
 1. Crea una base de datos llamada cine que contenga dos tablas con las siguientes columnas.
 Tabla cuentas:
 • id_cuenta: entero sin signo (clave primaria).
@@ -787,13 +862,33 @@ Tabla cuentas:
 Tabla entradas:
 • id_butaca: entero sin signo (clave primaria).
 • nif: cadena de 9 caracteres.
+
+DROP DATABASE IF EXISTS cine;
+CREATE DATABASE cine;
+USE cine;
+
+CREATE TABLE cuentas (
+    id_cuenta INT UNSIGNED,
+    saldo REAL UNSIGNED,
+    PRIMARY KEY(id_cuenta)
+);
+
+CREATE TABLE entradas (
+    id_butaca INT UNSIGNED,
+    nif VARCHAR(9),
+    PRIMARY KEY(id_butaca)
+);
+
+
+
 Una vez creada la base de datos y las tablas deberá crear un procedimiento llamado
 comprar_entrada con las siguientes características. El procedimiento recibe 3 parámetros de
 entrada (nif, id_cuenta, id_butaca) y devolverá como salida un parámetro llamado error que
 tendrá un valor igual a 0 si la compra de la entrada se ha podido realizar con éxito y un valor igual
 a 1 en caso contrario.
-Triggers, procedimientos y funciones en
-MySQL1.8.6 Transacciones con procedimientos almacenados
+
+
+
 El procedimiento de compra realiza los siguientes pasos:
 • Inicia una transacción.
 • Actualiza la columna saldo de la tabla cuentas cobrando 5 euros a la cuenta con el id_cuenta
@@ -803,11 +898,13 @@ usuario (nif).
 • Comprueba si ha ocurrido algún error en las operaciones anteriores. Si no ocurre ningún
 error entonces aplica un COMMIT a la transacción y si ha ocurrido algún error aplica un
 ROLLBACK.
-Triggers, procedimientos y funciones en
-MySQL1.8.6 Transacciones con procedimientos almacenados
+
 Deberá manejar los siguientes errores que puedan ocurrir durante el proceso.
 • ERROR 1264 (Out of range value)
 • ERROR 1062 (Duplicate entry for PRIMARY KEY)
+
+
+
 2. ¿Qué ocurre cuando intentamos comprar una entrada y le pasamos como parámetro un
 número de cuenta que no existe en la tabla cuentas? ¿Ocurre algún error o podemos comprar la
 entrada?
