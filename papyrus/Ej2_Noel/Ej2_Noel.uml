@@ -1,7 +1,81 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<uml:Model xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_ytn9gACMEe-dg8AxTQpmjg" name="Ej2_Noel">
+<uml:Model xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_ytn9gACMEe-dg8AxTQpmjg" name="Ej2_Noel">
   <packageImport xmi:type="uml:PackageImport" xmi:id="_ywmZAACMEe-dg8AxTQpmjg">
     <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
   </packageImport>
-  <packagedElement xmi:type="uml:Class" xmi:id="_5L8r0ACMEe-dg8AxTQpmjg" name="Instalacion"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_5L8r0ACMEe-dg8AxTQpmjg" name="Instalacion">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_Ad4I4ACvEe-sgrZlCaglow" name="id_instalacion">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_FpQooACvEe-sgrZlCaglow" name="nombre" isUnique="false">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_LIWukACvEe-sgrZlCaglow" name="precio_hora" isUnique="false">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EDouble"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_UoBG8ACvEe-sgrZlCaglow" name="interior" isUnique="false">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_Z5fAkACvEe-sgrZlCaglow" name="disponible" isUnique="false">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
+      <defaultValue xmi:type="uml:LiteralBoolean" xmi:id="_OS8l0ACwEe-sgrZlCaglow" value="true"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_iNPmgACvEe-sgrZlCaglow" name="Socio">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_lI3DEACvEe-sgrZlCaglow" name="id_socio">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_oC2H8ACvEe-sgrZlCaglow" name="nombre" isUnique="false">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_r8aagACvEe-sgrZlCaglow" name="direccion" isUnique="false">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_vneXAACvEe-sgrZlCaglow" name="telefono" isUnique="false">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_xzBBgACvEe-sgrZlCaglow" name="cuota" isUnique="false">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EDouble"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_Z_sVQAC6Ee-sgrZlCaglow" name="reserva" type="_A-FdgACwEe-sgrZlCaglow" association="_Z_p5AAC6Ee-sgrZlCaglow">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_Z_sVQQC6Ee-sgrZlCaglow"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_Z_s8UAC6Ee-sgrZlCaglow" value="1"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_16iQgACvEe-sgrZlCaglow" name="Articulo">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_3tNIAACvEe-sgrZlCaglow" name="id_articulo">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_7V-lgACvEe-sgrZlCaglow" name="nombre" isUnique="false">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_9hzj4ACvEe-sgrZlCaglow" name="precio" isUnique="false">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EDouble"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_A-FdgACwEe-sgrZlCaglow" name="Reserva">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_FTuoEACwEe-sgrZlCaglow" name="id_reserva">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_Ik6sAACwEe-sgrZlCaglow" name="instalacion" type="_5L8r0ACMEe-dg8AxTQpmjg" isUnique="false"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_WAcdAACwEe-sgrZlCaglow" name="socio" type="_iNPmgACvEe-sgrZlCaglow" isUnique="false"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_Zvx1gACwEe-sgrZlCaglow" name="fecha_inicio" isUnique="false">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EDate"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_eE9GAACwEe-sgrZlCaglow" name="fecha_fin" isUnique="false">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EDate"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_gqrLEACwEe-sgrZlCaglow" name="articulos_alquilados" type="_16iQgACvEe-sgrZlCaglow" isUnique="false">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_x8J58ACwEe-sgrZlCaglow"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_x8n0AACwEe-sgrZlCaglow" value="*"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_Z_p5AAC6Ee-sgrZlCaglow" visibility="private" memberEnd="_Z_sVQAC6Ee-sgrZlCaglow _Z_s8UQC6Ee-sgrZlCaglow">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_Z_ruMAC6Ee-sgrZlCaglow" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_Z_ruMQC6Ee-sgrZlCaglow" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_Z_s8UQC6Ee-sgrZlCaglow" name="socio" type="_iNPmgACvEe-sgrZlCaglow" association="_Z_p5AAC6Ee-sgrZlCaglow">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_gSd64AC6Ee-sgrZlCaglow" value="*"/>
+    </ownedEnd>
+  </packagedElement>
 </uml:Model>

@@ -1006,36 +1006,100 @@ formada por las siguientes columnas:
 • apellido1 (cadena de caracteres)
 • apellido2 (cadena de caracteres
 • fecha_nacimiento (fecha)
+
+USE test
+
+DROP TABLE IF EXISTS alumnos;
+CREATE TABLE alumnos(
+    id INT UNSIGNED,
+    nombre VARCHAR(50),
+    apellido1 VARCHAR(50),
+    apellido2 VARCHAR(50),
+    fecha_nacimiento DATE,
+    PRIMARY KEY(id)
+);
+
 Una vez creada la tabla se decide añadir una nueva columna a la tabla llamada edad que será un
 valor calculado a partir de la columna fecha_nacimiento. Escriba la sentencia SQL necesaria para
 modificar la tabla y añadir la nueva columna.
-Triggers, procedimientos y funciones en
-MySQL1.8.7 Cursores
+
+ALTER TABLE alumnos ADD edad INT;
+ALTER TABLE alumnos drop edad;
+
+
+
 Escriba una función llamada calcular_edad que reciba una fecha y devuelva el número de años que
 han pasado desde la fecha actual hasta la fecha pasada como parámetro:
 • Función: calcular_edad
 • Entrada: Fecha
 • Salida: Número de años (entero)
+
+delimiter $$
+DROP FUNCTION IF EXISTS calcular_edad $$
+CREATE FUNCTION calcular_edad(fecha DATE)
+  RETURNS INT
+BEGIN
+	RETURN TRUNCATE(DATEDIFF(CURRENT_DATE(),fecha)/365,25);
+END $$
+delimiter ;
+
+SELECT calcular_edad('2000-04-22');
+
+ALTER TABLE alumnos drop edad;
+
+INSERT INTO alumnos VALUES (1, 'Noel', 'Dominguez', 'Serrano', '1992-03-04');
+INSERT INTO alumnos VALUES (2, 'Brayan', 'Stiven', 'Ochoa', '2004-05-08');
+INSERT INTO alumnos VALUES (3, 'Pablo', 'Rivas', 'Jimenez', '1994-03-11');
+INSERT INTO alumnos VALUES (4, 'Perico', 'palotes', 'De todos los Santos', '2000-01-01');
+
+ALTER TABLE alumnos ADD edad INT;
+
 Ahora escriba un procedimiento que permita calcular la edad de todos los alumnos que ya existen
 en la tabla.
 Para esto será necesario crear un procedimiento llamado actualizar_columna_edad que calcule la
 edad de cada alumno y actualice la tabla. Este procedimiento hará uso de la función calcular_edad
 que hemos creado en el paso anterior.
-Triggers, procedimientos y funciones en
-MySQL1.8.7 Cursores
+
+delimiter $$
+DROP PROCEDURE IF EXISTS actualizar_columna_edad $$
+CREATE PROCEDURE actualizar_alumnos_edad()
+BEGIN
+  DECLARE done INT DEFAULT FALSE;
+  DECLARE i_fecha DATE;
+  DECLARE aux_id INT;
+  DECLARE cur1 CURSOR FOR SELECT id, fecha_nacimiento FROM alumnos;
+  DECLARE CONTINUE HANDLER FOR NOT FOUND SET done = TRUE;
+
+  OPEN cur1;
+
+  read_loop: LOOP
+    FETCH cur1 INTO aux_id, i_fecha;
+    IF done THEN
+      LEAVE read_loop;
+    END IF;
+   	UPDATE alumnos SET edad = calcular_edad(i_fecha)
+   	WHERE aux_id = id;
+  END LOOP;
+  CLOSE cur1;
+END$$
+delimiter ;
+
+CALL actualizar_alumnos_edad();
+
+
 2. Modifica la tabla alumnos del ejercicio anterior para añadir una nueva columna email. Una vez
 que hemos modificado la tabla necesitamos asignarle una dirección de correo electrónico de forma
 automática.
 Escriba un procedimiento llamado crear_email que dados los parámetros de entrada: nombre,
 apellido1, apellido2 y dominio, cree una dirección de email y la devuelva como salida.
 • Procedimiento: crear_email
+
 • Entrada:
 – nombre (cadena de caracteres)
 – apellido1 (cadena de caracteres)
 – apellido2 (cadena de caracteres)
 – dominio (cadena de caracteres)
-Triggers, procedimientos y funciones en
-MySQL1.8.7 Cursores
+
 • Salida:
 – email (cadena de caracteres)
 devuelva una dirección de correo electrónico con el siguiente formato:
@@ -1048,8 +1112,7 @@ Ahora escriba un procedimiento que permita crear un email para todos los alumnos
 en la tabla.
 Para esto será necesario crear un procedimiento llamado actualizar_columna_email que actualice
 la columna email de la tabla alumnos.
-Triggers, procedimientos y funciones en
-MySQL1.8.7 Cursores
+
 Este procedimiento hará uso del procedimiento crear_email que hemos creado en el paso anterior.
 3. Escribe un procedimiento llamado crear_lista_emails_alumnos que devuelva la lista de emails
 de la tabla alumnos separados por un punto y coma. Ejemplo: juan@ccc.org; maria@ccc.org;
