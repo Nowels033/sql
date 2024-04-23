@@ -1,0 +1,14 @@
+Router(config-if)#ip dhcp  pool vlan10
+Router(dhcp-config)#net
+Router(dhcp-config)#network 172.16.10.0 255.255.255.0
+Router(dhcp-config)#dns-
+Router(dhcp-config)#dns-server 172.16.50.2
+Router(dhcp-config)#default-ro
+Router(dhcp-config)#default-router 172.16.10.1
+Router(network 172.1ip dhcp  pool vlan10ip dhcp network 172.16.10.0 255.255.255.0network 172.16.20.0 255.255.defadns-server 172.16.50.2dns-servernetworkdefault-router 172.16.10.1default-router 172.16.20.1
+Router(networkdefault-router 172.16.exitexitinterface gig
+Router(config)#interface gigabitEthernet 0/0/0.10
+Router(config-subif)#encapsu
+Router(config-subif)#encapsulation dot
+Router(config-subif)#encapsulatinterface giencapsulation dot1Q 10encapsulation dot1Q 10
+Router#
