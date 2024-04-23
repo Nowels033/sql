@@ -994,7 +994,7 @@ delimiter ;
 call comprar_entrada('12345678Y', 4, 11,@errorProc);
 select @errorProc;
 
--- version 2 para ver si tiene dinero en la cuenta:
+
 
 
 
@@ -1094,6 +1094,8 @@ Escriba un procedimiento llamado crear_email que dados los parámetros de entrad
 apellido1, apellido2 y dominio, cree una dirección de email y la devuelva como salida.
 • Procedimiento: crear_email
 
+
+
 • Entrada:
 – nombre (cadena de caracteres)
 – apellido1 (cadena de caracteres)
@@ -1108,12 +1110,86 @@ devuelva una dirección de correo electrónico con el siguiente formato:
 • Los tres primeros caracteres del parámetro apellido2.
 • El carácter @.
 • El dominio pasado como parámetro.
+
+delimiter $$
+DROP PROCEDURE IF EXISTS crear_email $$
+CREATE PROCEDURE crear_email(in nombre VARCHAR(50),in apellido1 VARCHAR(50),in apellido2 VARCHAR(50),in dominio VARCHAR(20),out email VARCHAR(50))
+BEGIN 
+	SET email = CONCAT(SUBSTRING(nombre, 1, 1), SUBSTRING(apellido1, 1, 3), SUBSTRING(apellido2, 1, 3),"@", dominio);
+END$$
+delimiter ;
+
+-- SELECT CONCAT("nombre",1), CONCAT("apellido1",3), CONCAT("pellido",3), "@", "dominio";
+SELECT CONCAT(SUBSTRING("noel", 1, 1), SUBSTRING("Dominguez", 1, 3), SUBSTRING("Serrano", 1, 3), "@dominio.es") AS correo;
+-- prueba
+CALL crear_email('noel', 'Dominguez', 'Serrano', 'gmail.ccc', @email);
+SELECT @email;
+
+ALTER TABLE alumnos ADD email VARCHAR(50);
+
 Ahora escriba un procedimiento que permita crear un email para todos los alumnos que ya existen
 en la tabla.
 Para esto será necesario crear un procedimiento llamado actualizar_columna_email que actualice
 la columna email de la tabla alumnos.
 
 Este procedimiento hará uso del procedimiento crear_email que hemos creado en el paso anterior.
+
+delimiter $$
+DROP PROCEDURE IF EXISTS generar_correo_alumnos $$
+CREATE PROCEDURE generar_correo_alumnos()
+BEGIN
+  DECLARE done INT DEFAULT FALSE;
+  DECLARE aux_nombre VARCHAR(50);
+  DECLARE aux_apellido1 VARCHAR(50);
+  DECLARE aux_apellido2 VARCHAR(50);
+  DECLARE aux_id INT;
+  DECLARE cur1 CURSOR FOR SELECT id, nombre,apellido1,apellido2 FROM alumnos;
+  DECLARE CONTINUE HANDLER FOR NOT FOUND SET done = TRUE;
+
+  OPEN cur1;
+
+  read_loop: LOOP
+    FETCH cur1 INTO aux_id, aux_nombre,aux_apellido1,aux_apellido2;
+    IF done THEN
+      LEAVE read_loop;
+    END IF;
+    CALL crear_email(aux_nombre, aux_apellido1, aux_apellido2, 'gmail.ccc', @email);
+   	UPDATE alumnos SET email = @email
+   	WHERE aux_id = id;
+  END LOOP;
+  CLOSE cur1;
+END$$
+delimiter ;
+
+call generar_correo_alumnos();
+
+
 3. Escribe un procedimiento llamado crear_lista_emails_alumnos que devuelva la lista de emails
 de la tabla alumnos separados por un punto y coma. Ejemplo: juan@ccc.org; maria@ccc.org;
 pepe@ccc.org; lucia@ccc.org .
+
+delimiter $$
+DROP PROCEDURE IF EXISTS crear_lista_emails_alumnos $$
+CREATE PROCEDURE crear_lista_emails_alumnos()
+BEGIN
+	DECLARE done INT DEFAULT FALSE;
+  	DECLARE aux_email VARCHAR(50);
+  	DECLARE lista VARCHAR(1000) DEFAULT "";
+	DECLARE cur1 CURSOR FOR SELECT email FROM alumnos;	
+	DECLARE CONTINUE HANDLER FOR NOT FOUND SET done = TRUE;
+  	OPEN cur1;
+
+  	read_loop: LOOP
+	    FETCH cur1 INTO aux_email; 
+	    IF done THEN
+	      LEAVE read_loop;
+	    END IF;
+	   	SET lista = CONCAT(lista, aux_email, ";");
+	END LOOP;
+	/* para quitar el ; del final*/
+	SET lista = SUBSTRING(lista, 1, LENGTH(lista)-1); 
+  	CLOSE cur1;
+  	SELECT lista;
+END;
+
+CALL crear_lista_emails_alumnos();
