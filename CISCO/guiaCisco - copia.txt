@@ -1,0 +1,71 @@
+EJERCICIO PROPUESTO
+
+
+1*
+hacer el diagrama
+
+2*
+Configurar las redes simples (sin DHCP)
+(pc por pc, en las simples que solo sale una red del switch, 
+no hay que hacer nada en el switch )
+en router selecionar el puerto de enlace y poner la puerta de enlace y la mascara
+y encender
+y los demas puertos
+guardar
+repetir con los demás routers simples
+
+3*
+Conf routers con vlan y/o DHCP
+abrir el router
+
+
+-CLI
+enable
+conf t
+interface (fast/gig0/0).(nvlan)
+encapsulation dot1Q (nºvlan)
+ip address (ip_puerta_enlace) (mascara)
+no shutdown
+exit
+repetir el proceso
+
+
+4*
+configurar los saltos a otras redes
+se selecciona el router > configuracion > static (rellenar los campos)
+Network: (la red que se desconoce)
+Mask: (mascara de red)
+Next Hop: (la direccion del puerto por la que tiene que pasar por primera vez
+para ir a la red puesta arriba)
+-seleccionar Add
+y repetir el proceo con todas las redes que se desconocen
+
+
+
+------
+CONFIGURAR EL DHCP
+abrir router
+-config
+ip dhcp pool (nombrepool)
+dhcp-config network (ipred) (mascara red)
+DNS-server (IP_dns)
+default-router (ip_puerta_enlace)
+
+CONFIGURAR PUERTOS VIRTUALES EN EL ROUTER
+-CLI
+-config
+interface fastEthernet0/0.(nºvlan)
+encapsulation dot1Q (nºvlan)
+ip address (ip_puerta_enlace) (mascara)
+no shutdown
+exit
+repetir el proceso
+
+servers(dns)
+-servicios
+-dns
+encenderlo
+nombre y la direccionIP de 
+
+-web
+activar

@@ -1,0 +1,210 @@
+--CONFIGURAR EL ROUTER
+enable
+conf ter
+interface gigabitEthernet 0/0/0.10
+encapsulation dotIQ 10
+no shutdown
+exit
+conf ter
+interface gigabitEthernet 0/0/0.20
+encapsulation dotIQ 20
+no shutdown
+exit
+
+
+--PARA CONFIGURAR EL DHCP
+exit
+ip dhcp pool vlan10
+network (direccion ip y mascara) 172.16.10.0 255.255.255.0
+dns-server 172.16.50.2
+default-router 172.16.10.1
+
+ip dhcp pool vlan20
+network (direccion ip y mascara) 172.16.20.0 255.255.255.0
+dns-server 172.16.50.2
+default-router 172.16.20.1
+exit
+
+--CONFIGURAR TERMINAL DE FORMA MANUAL
+172.16.30.2
+255.255.255.0
+172.16.30.1
+172.16.50.2
+
+172.16.30.254
+255.255.255.0
+172.16.30.1
+172.16.50.2
+
+-- CONFIGURAR ROUTER
+encerder
+172.16.100.254
+255.255.255.0
+
+172.16.30.1
+255.255.255.0
+
+encendido y poner la maxima velocidad
+10.0.0.1
+255.255.255.0
+
+(en la parte sin reloj se pone NOT SET)
+
+
+--CONFIGURAR ROUTER DHCP
+enable
+conf t
+ip dhcp pool red40
+network 172.16.40.0 255.255.255.0
+dns-server 172.16.50.2
+default-router 172.16.40.1
+exit
+->config fast0/0 encerder
+
+--CONFIGURAR SERVIDORES
+172.16.50.2
+255.255.255.0
+172.16.50.1
+172.16.50.2
+
+172.16.50.254
+255.255.255.0
+172.16.50.1
+172.16.50.2
+
+--CONECTAR CON LAS RUTAS QUE SE DESCONCEN
+172.16.30.0
+255.255.255.0
+172.16.100.254
+add
+
+172.16.40.0
+255.255.255.0
+172.16.100.254
+add
+
+172.16.50.0
+255.255.255.0
+172.16.100.254
+add
+
+172.16.110.0
+255.255.255.0
+172.16.100.254
+add
+
+10.0.0.0
+255.255.255.0
+172.16.100.254
+add
+guardar
+
+-2router
+172.16.10.0
+255.255.255.0
+172.16.100.1
+add
+
+172.16.20.0
+255.255.255.0
+172.16.100.1
+add
+
+172.16.50.0
+255.255.255.0
+10.0.0.254
+
+172.16.40.0
+255.255.255.0
+172.16.100.1
+
+172.16.110.0
+255.255.255.0
+172.16.100.1
+guardar
+
+3router
+172.16.10.0
+255.255.255.0
+10.0.0.1
+add
+
+172.16.20.0
+255.255.255.0
+10.0.0.1
+
+172.16.30.0
+255.255.255.0
+10.0.0.1
+
+172.16.100.0
+255.255.255.0
+10.0.0.1
+add
+
+172.16.40.0
+255.255.255.0
+172.16.110.254
+add
+guardar
+
+4router
+172.16.10.0
+255.255.255.0
+172.16.110.1
+add
+
+172.16.20.0
+255.255.255.0
+172.16.110.1
+add
+
+172.16.30.0
+255.255.255.0
+172.16.110.1
+add
+
+172.16.100.0
+255.255.255.0
+172.16.110.1
+add
+
+172.16.50.0
+255.255.255.0
+172.16.110.1
+add
+
+10.0.0.0
+255.255.255.0
+172.16.110.1
+add
+guardar
+
+--CONF SERVIDOR
+-services
+-DNS
+encender
+www.dam.es
+(adrres).50.254
+
+-Services
+-Index
+edit
+guardar
+
+-pc1
+browser
+
+-servidorweb
+-email
+(domain) dam.es (set)
+(user)u1 (contraseña)u1
+
+-pc1
+-email
+usuario1
+u1@dam.es
+172.16.10.2
+u1
+u1
+(send)

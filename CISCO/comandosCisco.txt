@@ -1,0 +1,9 @@
+encapsule
+
+
+
+
+RUTA EN STATIC
+-> la ruta destino ()
+-> interfaz ()
+-> por donde hace el salto (si es a la izquierda 176.19.0.1 // derecha 176.19.255.254)
