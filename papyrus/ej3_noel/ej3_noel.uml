@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_SBi_gAWHEe-q94fpZ3qM7Q" name="ej3_noel">
+  <packageImport xmi:type="uml:PackageImport" xmi:id="_SEMq4AWHEe-q94fpZ3qM7Q">
+    <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
+  </packageImport>
+  <packagedElement xmi:type="uml:Actor" xmi:id="_WUZ70AWHEe-q94fpZ3qM7Q" name="Cliente"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_Fj59oAWIEe-q94fpZ3qM7Q" name="Gestion de ventas" useCase="_rf3XgAWIEe-q94fpZ3qM7Q _DDgA8AWJEe-q94fpZ3qM7Q _N39pEAWJEe-q94fpZ3qM7Q">
+    <ownedUseCase xmi:type="uml:UseCase" xmi:id="_oIK4YAWHEe-q94fpZ3qM7Q" name="Registro de cliente">
+      <extensionPoint xmi:type="uml:ExtensionPoint" xmi:id="_rHd7EAWHEe-q94fpZ3qM7Q" name="ExtensionPoint1"/>
+    </ownedUseCase>
+    <ownedUseCase xmi:type="uml:UseCase" xmi:id="_fv60AAWHEe-q94fpZ3qM7Q" name="Comprar Producto">
+      <extend xmi:type="uml:Extend" xmi:id="_rHcs8AWHEe-q94fpZ3qM7Q" extendedCase="_oIK4YAWHEe-q94fpZ3qM7Q" extensionLocation="_rHd7EAWHEe-q94fpZ3qM7Q"/>
+      <include xmi:type="uml:Include" xmi:id="_HO1Y8AWJEe-q94fpZ3qM7Q" addition="_DDgA8AWJEe-q94fpZ3qM7Q"/>
+    </ownedUseCase>
+    <ownedUseCase xmi:type="uml:UseCase" xmi:id="_rf3XgAWIEe-q94fpZ3qM7Q" name="buscar producto" subject="_Fj59oAWIEe-q94fpZ3qM7Q">
+      <include xmi:type="uml:Include" xmi:id="_JJ27MAWJEe-q94fpZ3qM7Q" addition="_DDgA8AWJEe-q94fpZ3qM7Q"/>
+    </ownedUseCase>
+    <ownedUseCase xmi:type="uml:UseCase" xmi:id="_DDgA8AWJEe-q94fpZ3qM7Q" name="recuperar producto" subject="_Fj59oAWIEe-q94fpZ3qM7Q"/>
+    <ownedUseCase xmi:type="uml:UseCase" xmi:id="_N39pEAWJEe-q94fpZ3qM7Q" name="insertar producto" subject="_Fj59oAWIEe-q94fpZ3qM7Q"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Actor" xmi:id="_MG3e4AWJEe-q94fpZ3qM7Q" name="admin"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_Pt8TQAWJEe-q94fpZ3qM7Q" memberEnd="_Pt-vgAWJEe-q94fpZ3qM7Q _PuAksAWJEe-q94fpZ3qM7Q">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_Pt9hYAWJEe-q94fpZ3qM7Q" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_Pt-IcAWJEe-q94fpZ3qM7Q" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_Pt-vgAWJEe-q94fpZ3qM7Q" name="insertar producto" type="_N39pEAWJEe-q94fpZ3qM7Q" association="_Pt8TQAWJEe-q94fpZ3qM7Q"/>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_PuAksAWJEe-q94fpZ3qM7Q" name="admin" type="_MG3e4AWJEe-q94fpZ3qM7Q" association="_Pt8TQAWJEe-q94fpZ3qM7Q"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_QO9VoAWJEe-q94fpZ3qM7Q" memberEnd="_QO98sgWJEe-q94fpZ3qM7Q _QO98swWJEe-q94fpZ3qM7Q">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_QO98sAWJEe-q94fpZ3qM7Q" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_QO98sQWJEe-q94fpZ3qM7Q" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_QO98sgWJEe-q94fpZ3qM7Q" name="comprar producto" type="_fv60AAWHEe-q94fpZ3qM7Q" association="_QO9VoAWJEe-q94fpZ3qM7Q"/>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_QO98swWJEe-q94fpZ3qM7Q" name="cliente" type="_WUZ70AWHEe-q94fpZ3qM7Q" association="_QO9VoAWJEe-q94fpZ3qM7Q"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_RJUFEAWJEe-q94fpZ3qM7Q" memberEnd="_RJUsIAWJEe-q94fpZ3qM7Q _RJUsIQWJEe-q94fpZ3qM7Q">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_RJUFEQWJEe-q94fpZ3qM7Q" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_RJUFEgWJEe-q94fpZ3qM7Q" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_RJUsIAWJEe-q94fpZ3qM7Q" name="buscar producto" type="_rf3XgAWIEe-q94fpZ3qM7Q" association="_RJUFEAWJEe-q94fpZ3qM7Q"/>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_RJUsIQWJEe-q94fpZ3qM7Q" name="cliente" type="_WUZ70AWHEe-q94fpZ3qM7Q" association="_RJUFEAWJEe-q94fpZ3qM7Q"/>
+  </packagedElement>
+</uml:Model>

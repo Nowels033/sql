@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<notation:Diagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.3/notation" xmlns:style="http://www.eclipse.org/papyrus/infra/gmfdiag/style" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_1Htz0AWOEe-q94fpZ3qM7Q" type="UseCase" name="Use Case Diagram" measurementUnit="Pixel">
+  <children xmi:type="notation:Shape" xmi:id="_4JgJ0AWOEe-q94fpZ3qM7Q" type="Classifier_SubjectShape">
+    <children xmi:type="notation:DecorationNode" xmi:id="_4Jgw4AWOEe-q94fpZ3qM7Q" type="Classifier_NameLabel"/>
+    <children xmi:type="notation:DecorationNode" xmi:id="_4Jgw4QWOEe-q94fpZ3qM7Q" type="Classifier_FloatingNameLabel">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_4Jgw4gWOEe-q94fpZ3qM7Q" y="15"/>
+    </children>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_4Jgw4wWOEe-q94fpZ3qM7Q" type="Classifier_UseCaseCompartment">
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_4Jgw5AWOEe-q94fpZ3qM7Q"/>
+    </children>
+    <element xmi:type="uml:Class" href="model3.uml#_4JdGgAWOEe-q94fpZ3qM7Q"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_4JgJ0QWOEe-q94fpZ3qM7Q" x="480" y="120"/>
+  </children>
+  <styles xmi:type="notation:StringValueStyle" xmi:id="_1Htz0QWOEe-q94fpZ3qM7Q" name="diagram_compatibility_version" stringValue="1.4.0"/>
+  <styles xmi:type="notation:DiagramStyle" xmi:id="_1Htz0gWOEe-q94fpZ3qM7Q"/>
+  <styles xmi:type="style:PapyrusDiagramStyle" xmi:id="_1Htz0wWOEe-q94fpZ3qM7Q" diagramKindId="org.eclipse.papyrus.uml.diagram.useCase">
+    <owner xmi:type="uml:Model" href="model3.uml#_1HQg0AWOEe-q94fpZ3qM7Q"/>
+  </styles>
+  <element xmi:type="uml:Model" href="model3.uml#_1HQg0AWOEe-q94fpZ3qM7Q"/>
+</notation:Diagram>
