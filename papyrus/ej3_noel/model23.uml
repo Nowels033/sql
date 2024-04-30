@@ -5,20 +5,18 @@
   </packageImport>
   <packagedElement xmi:type="uml:Actor" xmi:id="_mvNPcAWJEe-q94fpZ3qM7Q" name="alumno"/>
   <packagedElement xmi:type="uml:Actor" xmi:id="_nxRJYAWJEe-q94fpZ3qM7Q" name="profesor"/>
-  <packagedElement xmi:type="uml:Class" xmi:id="_q43zgAWJEe-q94fpZ3qM7Q" name="Gestion de notas" useCase="_30zecAWJEe-q94fpZ3qM7Q _cCib8AWKEe-q94fpZ3qM7Q _j_H4AAWKEe-q94fpZ3qM7Q _rzOtgAWKEe-q94fpZ3qM7Q">
-    <ownedComment xmi:type="uml:Comment" xmi:id="_QVkpEAWLEe-q94fpZ3qM7Q">
-      <body>El sistema detecta si eres alumno o profesor y segun tu tipo de usuario te deja consultar notas o listar por asignatura o registrar notas&#xD;
-</body>
-    </ownedComment>
+  <packagedElement xmi:type="uml:Class" xmi:id="_q43zgAWJEe-q94fpZ3qM7Q" name="Gestion de notas" useCase="_30zecAWJEe-q94fpZ3qM7Q _cCib8AWKEe-q94fpZ3qM7Q _j_H4AAWKEe-q94fpZ3qM7Q _rzOtgAWKEe-q94fpZ3qM7Q _UtnK4AWMEe-q94fpZ3qM7Q">
     <ownedUseCase xmi:type="uml:UseCase" xmi:id="_30zecAWJEe-q94fpZ3qM7Q" name="autentificar" subject="_q43zgAWJEe-q94fpZ3qM7Q">
       <include xmi:type="uml:Include" xmi:id="_vd5BYAWKEe-q94fpZ3qM7Q" addition="_j_H4AAWKEe-q94fpZ3qM7Q"/>
-      <include xmi:type="uml:Include" xmi:id="_GZNGkAWLEe-q94fpZ3qM7Q" addition="_cCib8AWKEe-q94fpZ3qM7Q"/>
       <include xmi:type="uml:Include" xmi:id="_O1Hi8AWLEe-q94fpZ3qM7Q" addition="_rzOtgAWKEe-q94fpZ3qM7Q"/>
     </ownedUseCase>
     <ownedUseCase xmi:type="uml:UseCase" xmi:id="_cCib8AWKEe-q94fpZ3qM7Q" name="Consultar notas" subject="_q43zgAWJEe-q94fpZ3qM7Q"/>
     <ownedUseCase xmi:type="uml:UseCase" xmi:id="_j_H4AAWKEe-q94fpZ3qM7Q" name="Registrar nota" subject="_q43zgAWJEe-q94fpZ3qM7Q"/>
     <ownedUseCase xmi:type="uml:UseCase" xmi:id="_rzOtgAWKEe-q94fpZ3qM7Q" name="Listar notas de asignatura" subject="_q43zgAWJEe-q94fpZ3qM7Q">
       <extensionPoint xmi:type="uml:ExtensionPoint" xmi:id="_wMfMwAWKEe-q94fpZ3qM7Q" name="ExtensionPoint1"/>
+    </ownedUseCase>
+    <ownedUseCase xmi:type="uml:UseCase" xmi:id="_UtnK4AWMEe-q94fpZ3qM7Q" name="autentificar" subject="_q43zgAWJEe-q94fpZ3qM7Q">
+      <include xmi:type="uml:Include" xmi:id="_ZM29YAWMEe-q94fpZ3qM7Q" addition="_cCib8AWKEe-q94fpZ3qM7Q"/>
     </ownedUseCase>
   </packagedElement>
   <packagedElement xmi:type="uml:Association" xmi:id="_9QGCcAWJEe-q94fpZ3qM7Q" memberEnd="_9QHQkAWJEe-q94fpZ3qM7Q _9QHQkQWJEe-q94fpZ3qM7Q">
@@ -28,11 +26,11 @@
     <ownedEnd xmi:type="uml:Property" xmi:id="_9QHQkAWJEe-q94fpZ3qM7Q" name="autentificar" type="_30zecAWJEe-q94fpZ3qM7Q" association="_9QGCcAWJEe-q94fpZ3qM7Q"/>
     <ownedEnd xmi:type="uml:Property" xmi:id="_9QHQkQWJEe-q94fpZ3qM7Q" name="profesor" type="_nxRJYAWJEe-q94fpZ3qM7Q" association="_9QGCcAWJEe-q94fpZ3qM7Q"/>
   </packagedElement>
-  <packagedElement xmi:type="uml:Association" xmi:id="_Fd7KEAWLEe-q94fpZ3qM7Q" memberEnd="_Fd8YMAWLEe-q94fpZ3qM7Q _Fd8YMQWLEe-q94fpZ3qM7Q">
-    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_Fd7xIAWLEe-q94fpZ3qM7Q" source="org.eclipse.papyrus">
-      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_Fd7xIQWLEe-q94fpZ3qM7Q" key="nature" value="UML_Nature"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_YboUwAWMEe-q94fpZ3qM7Q" memberEnd="_YboUwwWMEe-q94fpZ3qM7Q _Ybo70AWMEe-q94fpZ3qM7Q">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_YboUwQWMEe-q94fpZ3qM7Q" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_YboUwgWMEe-q94fpZ3qM7Q" key="nature" value="UML_Nature"/>
     </eAnnotations>
-    <ownedEnd xmi:type="uml:Property" xmi:id="_Fd8YMAWLEe-q94fpZ3qM7Q" name="autentificar" type="_30zecAWJEe-q94fpZ3qM7Q" association="_Fd7KEAWLEe-q94fpZ3qM7Q"/>
-    <ownedEnd xmi:type="uml:Property" xmi:id="_Fd8YMQWLEe-q94fpZ3qM7Q" name="alumno" type="_mvNPcAWJEe-q94fpZ3qM7Q" association="_Fd7KEAWLEe-q94fpZ3qM7Q"/>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_YboUwwWMEe-q94fpZ3qM7Q" name="autentificar" type="_UtnK4AWMEe-q94fpZ3qM7Q" association="_YboUwAWMEe-q94fpZ3qM7Q"/>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_Ybo70AWMEe-q94fpZ3qM7Q" name="alumno" type="_mvNPcAWJEe-q94fpZ3qM7Q" association="_YboUwAWMEe-q94fpZ3qM7Q"/>
   </packagedElement>
 </uml:Model>

@@ -33,3 +33,7 @@ Insert into Persona values (6, 'Henry', 'Gonzalez', 21,2);
 Insert into Persona values (7, 'Daniel', 'Hidalgo', 16,1);
 Insert into Persona values (8, 'Roy', 'Castro', 20,4);
 Insert into Persona values (9, 'Sabrina', 'de la Torre', 18,2);
+
+select * from pais;
+select * from persona;
+select * from personaspaises;
