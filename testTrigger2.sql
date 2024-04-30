@@ -84,7 +84,7 @@ insert into empleados values('42345678T','pablo','1234',1300,1000,'2024-04-09');
 insert into empleados values('52345678T','perico','1234',1300,1000,'2024-04-09');
 insert into empleados values('62345678T','palotes','1234',1300,1000,'2024-04-09');
 
-set @@autocommit = 1;
+-- set @@autocommit = 1;
 
 delimiter $$
 create trigger salario20porciento before update on empleados
@@ -95,12 +95,44 @@ declare salarionuevo double DEFAULT old.salario+porcentaje;
 
 
 if NEW.salario > salarionuevo then 
-set @msg = concat(' No se puede poner un salario mayor al 20% del empleado');
+set @msg = concat('No se puede poner un salario mayor al 20% del empleado');
           signal SQLSTATE '45000' SET MESSAGE_TEXT = @msg;
 END IF;
 end$$
 
         delimiter ;
-        
-  drop trigger salario20porciento ;     
-update empleados set salario = 1000000000000000000 where dni ='12345678T';
+
+update empleados set salario = 1000000000000000000 where dni ='12345678T';        
+
+--  drop trigger salario20porciento ;    
+-- las sentencias de dll de estructura de tabla solo se pueden ejecutar en procedimiento, ni el trigger ni la funcion lo permite en mysql 
+
+drop trigger sueldoManager;
+delimiter $$
+
+create trigger sueldoManager after update on empleados
+FOR EACH ROW
+begin
+declare manager varchar(9) default (select mgr from empleados where dni = old.dni);
+
+declare salariomax double default (select max(salario) from empleados where mgr = manager);
+
+declare salariomanager double default (select salario from empleados where dni= manager);
+-- set manager = ;
+
+set @aux_manager = manager;
+set @aux_salariomax = salariomax;
+set @aux_salariomanager = salariomanager;
+
+if  salariomax > salariomanager then 
+
+update empleados set empleados.salario= salariomax where empleados.dni = manager;
+
+END IF;
+
+end$$
+
+        delimiter ;
+
+update empleados set salario = 1150  where dni ='12345678T';
+select @aux_manager,@aux_salariomax,@aux_salariomanager;
