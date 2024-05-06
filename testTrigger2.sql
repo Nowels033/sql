@@ -135,4 +135,31 @@ end$$
         delimiter ;
 
 update empleados set salario = 1150  where dni ='12345678T';
+
+drop trigger sueldoManager;
+DELIMITER $$
+
+CREATE TRIGGER sueldoManager AFTER UPDATE ON empleados
+FOR EACH ROW
+BEGIN
+    DECLARE manager VARCHAR(9);
+    DECLARE salariomax DOUBLE;
+    DECLARE salariomanager DOUBLE;
+    
+
+
+    SELECT mgr INTO manager FROM empleados WHERE dni = OLD.dni;
+    SELECT MAX(salario) INTO salariomax FROM empleados WHERE mgr = manager;
+    SELECT salario INTO salariomanager FROM empleados WHERE dni = manager;
+set @aux_manager = manager;
+set @aux_salariomax = salariomax;
+set @aux_salariomanager = salariomanager;
+    IF salariomax > salariomanager THEN
+        UPDATE empleados SET salario = salariomax WHERE dni = manager;
+    END IF;
+END$$
+
+DELIMITER ;
+
 select @aux_manager,@aux_salariomax,@aux_salariomanager;
+insert into empleados values('1234','manager','1',300,1000,'2024-04-09');
