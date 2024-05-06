@@ -136,30 +136,122 @@ end$$
 
 update empleados set salario = 1150  where dni ='12345678T';
 
-drop trigger sueldoManager;
-DELIMITER $$
-
-CREATE TRIGGER sueldoManager AFTER UPDATE ON empleados
-FOR EACH ROW
-BEGIN
-    DECLARE manager VARCHAR(9);
-    DECLARE salariomax DOUBLE;
-    DECLARE salariomanager DOUBLE;
-    
-
-
-    SELECT mgr INTO manager FROM empleados WHERE dni = OLD.dni;
-    SELECT MAX(salario) INTO salariomax FROM empleados WHERE mgr = manager;
-    SELECT salario INTO salariomanager FROM empleados WHERE dni = manager;
-set @aux_manager = manager;
-set @aux_salariomax = salariomax;
-set @aux_salariomanager = salariomanager;
-    IF salariomax > salariomanager THEN
-        UPDATE empleados SET salario = salariomax WHERE dni = manager;
-    END IF;
-END$$
-
-DELIMITER ;
-
 select @aux_manager,@aux_salariomax,@aux_salariomanager;
 insert into empleados values('1234','manager','1',300,1000,'2024-04-09');
+
+lock tables nombreDeTabla write;
+unlock tables ;
+CREATE TEMPORARY TABLE temporal ;
+
+
+drop trigger salario20porciento;
+delimiter $$
+create trigger salario20porciento after update on empleados
+FOR EACH ROW
+begin
+declare porcentaje DOUBLE default old.salario*20/100 ;
+declare salariomax double DEFAULT old.salario+porcentaje;
+
+
+if NEW.salario > salariomax then 
+	update empleados set salario= salariomax where dni = new.dni;
+END IF;
+end$$
+
+        delimiter ;
+   
+   
+delimiter $$
+DROP PROCEDURE IF EXISTS modificar_salario $$
+CREATE PROCEDURE modificar_salario(in dni_empleado varchar(9),in sueldo_nuevo double)
+BEGIN
+	declare salarioempleado double default ( select salario from empleados where dni = dni_empleado);
+	declare porcentaje DOUBLE default salarioempleado*20/100 ;
+	declare salariomax double DEFAULT salarioempleado+porcentaje;
+
+
+if sueldo_nuevo > salariomax then 
+	update empleados set salario= salariomax where dni = dni_empleado;
+END IF;
+END;
+
+CALL modificar_salario('12345678T',11500);   
+   
+update empleados set salario = 11500  where dni ='12345678T';
+
+drop table if exists socios;
+create table socios (
+id int auto_increment,
+nombre varchar(100) not null,
+email varchar(225),
+anonacimiento date,
+primary key(id));
+
+create table recordatorios (
+id int auto_increment,
+idsocio int,
+mensaje varchar(225) not null,
+primary key (id,idsocio));
+
+drop trigger borrar_recordatorio;
+delimiter $$
+create trigger borrar_recordatorio before delete on socios
+FOR EACH ROW
+begin
+
+
+delete from  recordatorios where idsocio = old.id;
+
+end$$
+
+        delimiter ;
+   
+   
+delete from socios where id=1;
+drop trigger menoresdeedad;
+delimiter $$
+create trigger menoresdeedad before INSERT on socios
+FOR EACH ROW
+begin
+-- declare edad date default new.anonacimiento ;
+declare edadsocio INT; -- DEFAULT (DATEDIFF(CURRENT_DATE(),edad)/365,25);
+set edadsocio = YEAR(curdate()) - year(new.anonacimiento);
+
+if edadsocio < 18 then 
+set @msg = concat('EL SOCIO NO ES MAYOR DE EDAD');
+          signal SQLSTATE '45000' SET MESSAGE_TEXT = @msg;
+END IF;
+end$$
+
+        delimiter ;
+        
+INSERT INTO socios VALUES (3, 'pedro', 'pedro@gmail.com', '2020-04-03');
+INSERT INTO socios (nombre, email,anonacimiento) VALUES ('pedro', 'pedro@gmail.com', '2020-04-03');
+select current_date();
+
+drop table registro_socios;
+create table registro_socios (id int auto_increment,
+idsocio int,
+nombre_antiguo VARCHAR(100),
+nombre_nuevo VARCHAR(100),
+email_antiguo varchar(225),
+email_nuevo VARCHAR(225),
+edad_antigua date,
+edad_nueva date,
+fecha_actualizacion date,
+primary key (id));
+
+drop trigger actualizacion;
+delimiter $$
+create trigger actualizacion before update on socios
+FOR EACH ROW
+begin
+
+insert into registro_socios (idsocio,nombre_antiguo,nombre_nuevo,email_antiguo,email_nuevo,edad_antigua ,edad_nueva ,fecha_actualizacion) values
+(old.id,old.nombre,new.nombre,old.email,new.email,old.anonacimiento,new.anonacimiento,current_date());
+
+end$$
+
+        delimiter ;
+        
+update socios set nombre = "pepo" where id =1;
