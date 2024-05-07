@@ -247,11 +247,75 @@ create trigger actualizacion before update on socios
 FOR EACH ROW
 begin
 
+if old.nombre != new.nombre or old.email != new.email or old.anonacimiento != new.anonacimiento then 
+
 insert into registro_socios (idsocio,nombre_antiguo,nombre_nuevo,email_antiguo,email_nuevo,edad_antigua ,edad_nueva ,fecha_actualizacion) values
 (old.id,old.nombre,new.nombre,old.email,new.email,old.anonacimiento,new.anonacimiento,current_date());
 
+end if;
 end$$
-
-        delimiter ;
+delimiter ;
         
-update socios set nombre = "pepo" where id =1;
+update socios set nombre = "pepteo" where id =1;
+
+drop trigger cambionombre;
+delimiter $$
+create trigger cambionombre before update on socios
+FOR EACH ROW
+begin
+
+if old.nombre != new.nombre then 
+
+insert into recordatorios (idsocio,mensaje) values
+(old.id,concat("Se cambio el nombre de ",old.nombre," por ",new.nombre));
+
+end if;
+end$$
+delimiter ;
+
+update socios set nombre = "dorot1eo44115" where id =1;
+
+
+CREATE table recordatorios_backup(
+id int auto_increment,
+idsocio int,
+mensaje varchar(225) not null,
+primary key (id,idsocio));
+
+
+
+drop trigger borrarsocio;
+delimiter $$
+create trigger borrarsocio before DELETE on socios
+FOR EACH ROW
+begin
+
+insert into recordatorios_backup (idsocio,mensaje)  select idsocio,mensaje from recordatorios where idsocio=old.id;
+
+
+end$$
+delimiter ;
+
+delete from socios where id = 1;
+
+delimiter $$
+    drop trigger if exists recordatorios$$
+    create trigger arecordatorios before delete on socios
+    for each row
+    begin
+    
+    INSERT INTO recordatorios_backup (idsocio, mensaje) 
+    
+    SELECT idsocio, mensaje
+    FROM recordatorios
+    WHERE idsocio = OLD.id;
+    
+
+    end
+    $$
+    
+   delimiter ;
+   
+
+delete from socios where id = 1;
+drop TRIGGER borrar_recordatorio;
