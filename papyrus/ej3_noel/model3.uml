@@ -1,7 +1,53 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<uml:Model xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_1HQg0AWOEe-q94fpZ3qM7Q" name="model3">
+<uml:Model xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_1HQg0AWOEe-q94fpZ3qM7Q" name="model3">
   <packageImport xmi:type="uml:PackageImport" xmi:id="_1JOPsAWOEe-q94fpZ3qM7Q">
     <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
   </packageImport>
-  <packagedElement xmi:type="uml:Class" xmi:id="_4JdGgAWOEe-q94fpZ3qM7Q" name="Class2"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_4JdGgAWOEe-q94fpZ3qM7Q" name="Gestor Hoteles" useCase="_YUdUIA0_Ee-NYenzHUOR9A _gV-6kA0_Ee-NYenzHUOR9A _iVFrkA0_Ee-NYenzHUOR9A _i2cFIA0_Ee-NYenzHUOR9A _wvKvgA0_Ee-NYenzHUOR9A _yYOYAA0_Ee-NYenzHUOR9A _y1gw8A0_Ee-NYenzHUOR9A">
+    <ownedUseCase xmi:type="uml:UseCase" xmi:id="_YUdUIA0_Ee-NYenzHUOR9A" name="Registro" subject="_4JdGgAWOEe-q94fpZ3qM7Q"/>
+    <ownedUseCase xmi:type="uml:UseCase" xmi:id="_gV-6kA0_Ee-NYenzHUOR9A" name="Acceso" subject="_4JdGgAWOEe-q94fpZ3qM7Q">
+      <extend xmi:type="uml:Extend" xmi:id="_nUbTYA0_Ee-NYenzHUOR9A" extendedCase="_iVFrkA0_Ee-NYenzHUOR9A" extensionLocation="_nUb6cA0_Ee-NYenzHUOR9A"/>
+      <extend xmi:type="uml:Extend" xmi:id="_oX-bEA0_Ee-NYenzHUOR9A" extendedCase="_i2cFIA0_Ee-NYenzHUOR9A" extensionLocation="_oX-bEQ0_Ee-NYenzHUOR9A"/>
+    </ownedUseCase>
+    <ownedUseCase xmi:type="uml:UseCase" xmi:id="_iVFrkA0_Ee-NYenzHUOR9A" name="Solicitar Reserva" subject="_4JdGgAWOEe-q94fpZ3qM7Q">
+      <extensionPoint xmi:type="uml:ExtensionPoint" xmi:id="_nUb6cA0_Ee-NYenzHUOR9A" name="ExtensionPoint1"/>
+    </ownedUseCase>
+    <ownedUseCase xmi:type="uml:UseCase" xmi:id="_i2cFIA0_Ee-NYenzHUOR9A" name="Visualizar Reserva" subject="_4JdGgAWOEe-q94fpZ3qM7Q">
+      <extensionPoint xmi:type="uml:ExtensionPoint" xmi:id="_oX-bEQ0_Ee-NYenzHUOR9A" name="ExtensionPoint1"/>
+    </ownedUseCase>
+    <ownedUseCase xmi:type="uml:UseCase" xmi:id="_wvKvgA0_Ee-NYenzHUOR9A" name="Acceso" subject="_4JdGgAWOEe-q94fpZ3qM7Q">
+      <extend xmi:type="uml:Extend" xmi:id="_4WhicA0_Ee-NYenzHUOR9A" extendedCase="_yYOYAA0_Ee-NYenzHUOR9A" extensionLocation="_4WiJgA0_Ee-NYenzHUOR9A"/>
+      <extend xmi:type="uml:Extend" xmi:id="_5ils8A0_Ee-NYenzHUOR9A" extendedCase="_y1gw8A0_Ee-NYenzHUOR9A" extensionLocation="_5imUAA0_Ee-NYenzHUOR9A"/>
+    </ownedUseCase>
+    <ownedUseCase xmi:type="uml:UseCase" xmi:id="_yYOYAA0_Ee-NYenzHUOR9A" name="Visualizar todas las reservas sin factura" subject="_4JdGgAWOEe-q94fpZ3qM7Q">
+      <extensionPoint xmi:type="uml:ExtensionPoint" xmi:id="_4WiJgA0_Ee-NYenzHUOR9A" name="ExtensionPoint1"/>
+    </ownedUseCase>
+    <ownedUseCase xmi:type="uml:UseCase" xmi:id="_y1gw8A0_Ee-NYenzHUOR9A" name="Visualizar todas las reservas sin factura que deben facturarse en el día de hoy" subject="_4JdGgAWOEe-q94fpZ3qM7Q">
+      <extensionPoint xmi:type="uml:ExtensionPoint" xmi:id="_5imUAA0_Ee-NYenzHUOR9A" name="ExtensionPoint1"/>
+    </ownedUseCase>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Actor" xmi:id="_SjQxkA0_Ee-NYenzHUOR9A" name="Actor no registrado"/>
+  <packagedElement xmi:type="uml:Actor" xmi:id="_U0aU0A0_Ee-NYenzHUOR9A" name="Cliente"/>
+  <packagedElement xmi:type="uml:Actor" xmi:id="_WK9RAA0_Ee-NYenzHUOR9A" name="Administrador"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_beCUMA0_Ee-NYenzHUOR9A" memberEnd="_beEwcA0_Ee-NYenzHUOR9A _beEwcQ0_Ee-NYenzHUOR9A">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_beDiUA0_Ee-NYenzHUOR9A" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_beEJYA0_Ee-NYenzHUOR9A" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_beEwcA0_Ee-NYenzHUOR9A" name="registro" type="_YUdUIA0_Ee-NYenzHUOR9A" association="_beCUMA0_Ee-NYenzHUOR9A"/>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_beEwcQ0_Ee-NYenzHUOR9A" name="actor no registrado" type="_SjQxkA0_Ee-NYenzHUOR9A" association="_beCUMA0_Ee-NYenzHUOR9A"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_k4ljEA0_Ee-NYenzHUOR9A" memberEnd="_k4mKIg0_Ee-NYenzHUOR9A _k4mKIw0_Ee-NYenzHUOR9A">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_k4mKIA0_Ee-NYenzHUOR9A" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_k4mKIQ0_Ee-NYenzHUOR9A" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_k4mKIg0_Ee-NYenzHUOR9A" name="acceso" type="_gV-6kA0_Ee-NYenzHUOR9A" association="_k4ljEA0_Ee-NYenzHUOR9A"/>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_k4mKIw0_Ee-NYenzHUOR9A" name="cliente" type="_U0aU0A0_Ee-NYenzHUOR9A" association="_k4ljEA0_Ee-NYenzHUOR9A"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_2xeQMA0_Ee-NYenzHUOR9A" memberEnd="_2xe3QQ0_Ee-NYenzHUOR9A _2xe3Qg0_Ee-NYenzHUOR9A">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_2xeQMQ0_Ee-NYenzHUOR9A" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_2xe3QA0_Ee-NYenzHUOR9A" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_2xe3QQ0_Ee-NYenzHUOR9A" name="acceso" type="_wvKvgA0_Ee-NYenzHUOR9A" association="_2xeQMA0_Ee-NYenzHUOR9A"/>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_2xe3Qg0_Ee-NYenzHUOR9A" name="administrador" type="_WK9RAA0_Ee-NYenzHUOR9A" association="_2xeQMA0_Ee-NYenzHUOR9A"/>
+  </packagedElement>
 </uml:Model>
