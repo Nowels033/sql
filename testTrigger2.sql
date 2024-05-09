@@ -319,3 +319,41 @@ delimiter $$
 
 delete from socios where id = 1;
 drop TRIGGER borrar_recordatorio;
+
+
+CREATE TABLE historico_recordarios(
+id int AUTO_INCREMENT PRIMARY KEY,
+fecha_traspaso DATE,
+idsocio int,
+mensaje VARCHAR(255),
+fecha_creacion date);
+
+
+drop trigger  arecordatorios_lleno;
+delimiter $$
+    
+    create trigger arecordatorios_lleno before insert on recordatorios
+    for each row
+    begin
+    
+    declare conteo int default ( select count(*) from recordatorios);
+    
+    if conteo > 5 then
+    
+    INSERT INTO historico_recordarios (fecha_traspaso, idsocio, mensaje, fecha_creacion)
+	SELECT  , idsocio, mensaje, fecha_recordatorio FROM recordatorios;
+    
+	END IF;
+    end
+    $$
+    
+   delimiter ;
+   
+   update socios set nombre = "uiooyp" where id =1;
+   
+   insert into recordatorios(idsocio,mensaje,fecha_recordatorio) values (7,'jjejsadljfhkjsdhfsdfsdfsdfsdfsdfsdejejej',curdate());
+
+
+
+
+
