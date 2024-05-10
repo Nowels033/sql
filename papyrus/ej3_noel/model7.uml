@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_aQOeIA68Ee-wOtldLcOuZg" name="model7">
+  <packageImport xmi:type="uml:PackageImport" xmi:id="_aRGn4A68Ee-wOtldLcOuZg">
+    <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
+  </packageImport>
+  <packagedElement xmi:type="uml:Interaction" xmi:id="_aQb5gA68Ee-wOtldLcOuZg" name="Visualizar todas las reservas">
+    <lifeline xmi:type="uml:Lifeline" xmi:id="_gpjXsA68Ee-wOtldLcOuZg" name="Cliente" coveredBy="_qwoVYA68Ee-wOtldLcOuZg _qxMWEA68Ee-wOtldLcOuZg"/>
+    <lifeline xmi:type="uml:Lifeline" xmi:id="_hOvIYA68Ee-wOtldLcOuZg" name="sistema" coveredBy="_qwo8cA68Ee-wOtldLcOuZg _v0bmcA68Ee-wOtldLcOuZg _v0-ZAQ68Ee-wOtldLcOuZg _qxLvAA68Ee-wOtldLcOuZg _qxHdkA68Ee-wOtldLcOuZg"/>
+    <lifeline xmi:type="uml:Lifeline" xmi:id="_hzs2oA68Ee-wOtldLcOuZg" name="base de datos" coveredBy="_v0cNgA68Ee-wOtldLcOuZg _v0-ZAA68Ee-wOtldLcOuZg _v06HkA68Ee-wOtldLcOuZg"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_qwoVYA68Ee-wOtldLcOuZg" name="Message4SendEvent" covered="_gpjXsA68Ee-wOtldLcOuZg" message="_qwnHQA68Ee-wOtldLcOuZg"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_qwo8cA68Ee-wOtldLcOuZg" name="Message4ReceiveEvent" covered="_hOvIYA68Ee-wOtldLcOuZg" message="_qwnHQA68Ee-wOtldLcOuZg"/>
+    <fragment xmi:type="uml:BehaviorExecutionSpecification" xmi:id="_qxHdkA68Ee-wOtldLcOuZg" name="BehaviorExecutionSpecification7" covered="_hOvIYA68Ee-wOtldLcOuZg" finish="_qxLvAA68Ee-wOtldLcOuZg" start="_qwo8cA68Ee-wOtldLcOuZg"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_v0bmcA68Ee-wOtldLcOuZg" name="Message11SendEvent" covered="_hOvIYA68Ee-wOtldLcOuZg" message="_v0a_YA68Ee-wOtldLcOuZg"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_v0cNgA68Ee-wOtldLcOuZg" name="Message11ReceiveEvent" covered="_hzs2oA68Ee-wOtldLcOuZg" message="_v0a_YA68Ee-wOtldLcOuZg"/>
+    <fragment xmi:type="uml:BehaviorExecutionSpecification" xmi:id="_v06HkA68Ee-wOtldLcOuZg" name="BehaviorExecutionSpecification14" covered="_hzs2oA68Ee-wOtldLcOuZg" finish="_v0-ZAA68Ee-wOtldLcOuZg" start="_v0cNgA68Ee-wOtldLcOuZg"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_v0-ZAA68Ee-wOtldLcOuZg" name="Message16SendEvent" covered="_hzs2oA68Ee-wOtldLcOuZg" message="_v09K4A68Ee-wOtldLcOuZg"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_v0-ZAQ68Ee-wOtldLcOuZg" name="Message16ReceiveEvent" covered="_hOvIYA68Ee-wOtldLcOuZg" message="_v09K4A68Ee-wOtldLcOuZg"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_qxLvAA68Ee-wOtldLcOuZg" name="Message9SendEvent" covered="_hOvIYA68Ee-wOtldLcOuZg" message="_qxLH8A68Ee-wOtldLcOuZg"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_qxMWEA68Ee-wOtldLcOuZg" name="Message9ReceiveEvent" covered="_gpjXsA68Ee-wOtldLcOuZg" message="_qxLH8A68Ee-wOtldLcOuZg"/>
+    <message xmi:type="uml:Message" xmi:id="_qwnHQA68Ee-wOtldLcOuZg" name="cliente solicita ver todas las reservas" receiveEvent="_qwo8cA68Ee-wOtldLcOuZg" sendEvent="_qwoVYA68Ee-wOtldLcOuZg"/>
+    <message xmi:type="uml:Message" xmi:id="_qxLH8A68Ee-wOtldLcOuZg" name="sistema le muestra las reservas al cliente" messageSort="reply" receiveEvent="_qxMWEA68Ee-wOtldLcOuZg" sendEvent="_qxLvAA68Ee-wOtldLcOuZg"/>
+    <message xmi:type="uml:Message" xmi:id="_v0a_YA68Ee-wOtldLcOuZg" name="sistema pide en en la BD las reservas del cliente" receiveEvent="_v0cNgA68Ee-wOtldLcOuZg" sendEvent="_v0bmcA68Ee-wOtldLcOuZg"/>
+    <message xmi:type="uml:Message" xmi:id="_v09K4A68Ee-wOtldLcOuZg" name="base de datos envia todas las reservas del cliente" messageSort="reply" receiveEvent="_v0-ZAQ68Ee-wOtldLcOuZg" sendEvent="_v0-ZAA68Ee-wOtldLcOuZg"/>
+  </packagedElement>
+</uml:Model>

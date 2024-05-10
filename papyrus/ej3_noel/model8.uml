@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_bjUoQA69Ee-wOtldLcOuZg" name="model8">
+  <packageImport xmi:type="uml:PackageImport" xmi:id="_bkOnMA69Ee-wOtldLcOuZg">
+    <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
+  </packageImport>
+  <packagedElement xmi:type="uml:Interaction" xmi:id="_bjm8IA69Ee-wOtldLcOuZg" name="Visualizar todas las reservas sin factura">
+    <lifeline xmi:type="uml:Lifeline" xmi:id="_hBKJ8A69Ee-wOtldLcOuZg" name="Admin" coveredBy="_rnR0EA69Ee-wOtldLcOuZg _rnvuIQ69Ee-wOtldLcOuZg _OoFEYA6-Ee-wOtldLcOuZg _Oo3ukA6-Ee-wOtldLcOuZg"/>
+    <lifeline xmi:type="uml:Lifeline" xmi:id="_hp9PUA69Ee-wOtldLcOuZg" name="sistema" coveredBy="_rnTCMA69Ee-wOtldLcOuZg _3ifo4A69Ee-wOtldLcOuZg _3jXyoA69Ee-wOtldLcOuZg _rnvuIA69Ee-wOtldLcOuZg _OoGSgA6-Ee-wOtldLcOuZg _Oo3HgA6-Ee-wOtldLcOuZg _rnq1oA69Ee-wOtldLcOuZg _Ooy2EA6-Ee-wOtldLcOuZg"/>
+    <lifeline xmi:type="uml:Lifeline" xmi:id="_iCDmQA69Ee-wOtldLcOuZg" name="base de datos" coveredBy="_3ifo4Q69Ee-wOtldLcOuZg _3jV9cA69Ee-wOtldLcOuZg _3jRsAA69Ee-wOtldLcOuZg"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_rnR0EA69Ee-wOtldLcOuZg" name="Message4SendEvent" covered="_hBKJ8A69Ee-wOtldLcOuZg" message="_rnQl8A69Ee-wOtldLcOuZg"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_rnTCMA69Ee-wOtldLcOuZg" name="Message4ReceiveEvent" covered="_hp9PUA69Ee-wOtldLcOuZg" message="_rnQl8A69Ee-wOtldLcOuZg"/>
+    <fragment xmi:type="uml:BehaviorExecutionSpecification" xmi:id="_rnq1oA69Ee-wOtldLcOuZg" name="BehaviorExecutionSpecification7" covered="_hp9PUA69Ee-wOtldLcOuZg" finish="_rnvuIA69Ee-wOtldLcOuZg" start="_rnTCMA69Ee-wOtldLcOuZg"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_3ifo4A69Ee-wOtldLcOuZg" name="Message11SendEvent" covered="_hp9PUA69Ee-wOtldLcOuZg" message="_3ieawA69Ee-wOtldLcOuZg"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_3ifo4Q69Ee-wOtldLcOuZg" name="Message11ReceiveEvent" covered="_iCDmQA69Ee-wOtldLcOuZg" message="_3ieawA69Ee-wOtldLcOuZg"/>
+    <fragment xmi:type="uml:BehaviorExecutionSpecification" xmi:id="_3jRsAA69Ee-wOtldLcOuZg" name="BehaviorExecutionSpecification14" covered="_iCDmQA69Ee-wOtldLcOuZg" finish="_3jV9cA69Ee-wOtldLcOuZg" start="_3ifo4Q69Ee-wOtldLcOuZg"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_3jV9cA69Ee-wOtldLcOuZg" name="Message16SendEvent" covered="_iCDmQA69Ee-wOtldLcOuZg" message="_3jUvUA69Ee-wOtldLcOuZg"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_3jXyoA69Ee-wOtldLcOuZg" name="Message16ReceiveEvent" covered="_hp9PUA69Ee-wOtldLcOuZg" message="_3jUvUA69Ee-wOtldLcOuZg"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_rnvuIA69Ee-wOtldLcOuZg" name="Message9SendEvent" covered="_hp9PUA69Ee-wOtldLcOuZg" message="_rnvHEA69Ee-wOtldLcOuZg"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_rnvuIQ69Ee-wOtldLcOuZg" name="Message9ReceiveEvent" covered="_hBKJ8A69Ee-wOtldLcOuZg" message="_rnvHEA69Ee-wOtldLcOuZg"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_OoFEYA6-Ee-wOtldLcOuZg" name="Message18SendEvent" covered="_hBKJ8A69Ee-wOtldLcOuZg" message="_OoD2QA6-Ee-wOtldLcOuZg"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_OoGSgA6-Ee-wOtldLcOuZg" name="Message18ReceiveEvent" covered="_hp9PUA69Ee-wOtldLcOuZg" message="_OoD2QA6-Ee-wOtldLcOuZg"/>
+    <fragment xmi:type="uml:BehaviorExecutionSpecification" xmi:id="_Ooy2EA6-Ee-wOtldLcOuZg" name="BehaviorExecutionSpecification21" covered="_hp9PUA69Ee-wOtldLcOuZg" finish="_Oo3HgA6-Ee-wOtldLcOuZg" start="_OoGSgA6-Ee-wOtldLcOuZg"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_Oo3HgA6-Ee-wOtldLcOuZg" name="Message23SendEvent" covered="_hp9PUA69Ee-wOtldLcOuZg" message="_Oo2gcA6-Ee-wOtldLcOuZg"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_Oo3ukA6-Ee-wOtldLcOuZg" name="Message23ReceiveEvent" covered="_hBKJ8A69Ee-wOtldLcOuZg" message="_Oo2gcA6-Ee-wOtldLcOuZg"/>
+    <message xmi:type="uml:Message" xmi:id="_rnQl8A69Ee-wOtldLcOuZg" name="Admin solicita todas las reservas sin factura" receiveEvent="_rnTCMA69Ee-wOtldLcOuZg" sendEvent="_rnR0EA69Ee-wOtldLcOuZg"/>
+    <message xmi:type="uml:Message" xmi:id="_rnvHEA69Ee-wOtldLcOuZg" name="sistema muestra todas las reservas sin factura" messageSort="reply" receiveEvent="_rnvuIQ69Ee-wOtldLcOuZg" sendEvent="_rnvuIA69Ee-wOtldLcOuZg"/>
+    <message xmi:type="uml:Message" xmi:id="_3ieawA69Ee-wOtldLcOuZg" name="sistema pide a la bd todas las reservas de la BD sin factura" receiveEvent="_3ifo4Q69Ee-wOtldLcOuZg" sendEvent="_3ifo4A69Ee-wOtldLcOuZg"/>
+    <message xmi:type="uml:Message" xmi:id="_3jUvUA69Ee-wOtldLcOuZg" name="BD envia lo solicitado" messageSort="reply" receiveEvent="_3jXyoA69Ee-wOtldLcOuZg" sendEvent="_3jV9cA69Ee-wOtldLcOuZg"/>
+    <message xmi:type="uml:Message" xmi:id="_OoD2QA6-Ee-wOtldLcOuZg" name="admin selecciona la reserva que quiere ver" receiveEvent="_OoGSgA6-Ee-wOtldLcOuZg" sendEvent="_OoFEYA6-Ee-wOtldLcOuZg"/>
+    <message xmi:type="uml:Message" xmi:id="_Oo2gcA6-Ee-wOtldLcOuZg" name="sistema le muestra la reserva sin factura" messageSort="reply" receiveEvent="_Oo3ukA6-Ee-wOtldLcOuZg" sendEvent="_Oo3HgA6-Ee-wOtldLcOuZg"/>
+  </packagedElement>
+</uml:Model>

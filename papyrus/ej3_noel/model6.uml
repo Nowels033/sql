@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_IfL64A67Ee-wOtldLcOuZg" name="model6">
+  <packageImport xmi:type="uml:PackageImport" xmi:id="_If2pQA67Ee-wOtldLcOuZg">
+    <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
+  </packageImport>
+  <packagedElement xmi:type="uml:Interaction" xmi:id="_IfRacA67Ee-wOtldLcOuZg" name="Solicitar reserva">
+    <lifeline xmi:type="uml:Lifeline" xmi:id="_LgHVQA67Ee-wOtldLcOuZg" name="Cliente" coveredBy="_UD2Q4A67Ee-wOtldLcOuZg _UEUyAA67Ee-wOtldLcOuZg _i9IZUA67Ee-wOtldLcOuZg _i9rL4A67Ee-wOtldLcOuZg _r55gAA67Ee-wOtldLcOuZg _r6eu0A67Ee-wOtldLcOuZg"/>
+    <lifeline xmi:type="uml:Lifeline" xmi:id="_MIdusA67Ee-wOtldLcOuZg" name="Sistema" coveredBy="_UD238A67Ee-wOtldLcOuZg _UEUK8A67Ee-wOtldLcOuZg _i9JAYA67Ee-wOtldLcOuZg _i9qk0A67Ee-wOtldLcOuZg _r55gAQ67Ee-wOtldLcOuZg _r6eHwA67Ee-wOtldLcOuZg _UEP5gA67Ee-wOtldLcOuZg _i9m6cA67Ee-wOtldLcOuZg _r6ZPQA67Ee-wOtldLcOuZg"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_UD2Q4A67Ee-wOtldLcOuZg" name="Message3SendEvent" covered="_LgHVQA67Ee-wOtldLcOuZg" message="_UD1p0A67Ee-wOtldLcOuZg"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_UD238A67Ee-wOtldLcOuZg" name="Message3ReceiveEvent" covered="_MIdusA67Ee-wOtldLcOuZg" message="_UD1p0A67Ee-wOtldLcOuZg"/>
+    <fragment xmi:type="uml:BehaviorExecutionSpecification" xmi:id="_UEP5gA67Ee-wOtldLcOuZg" name="BehaviorExecutionSpecification6" covered="_MIdusA67Ee-wOtldLcOuZg" finish="_UEUK8A67Ee-wOtldLcOuZg" start="_UD238A67Ee-wOtldLcOuZg"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_UEUK8A67Ee-wOtldLcOuZg" name="Message8SendEvent" covered="_MIdusA67Ee-wOtldLcOuZg" message="_UETj4A67Ee-wOtldLcOuZg"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_UEUyAA67Ee-wOtldLcOuZg" name="Message8ReceiveEvent" covered="_LgHVQA67Ee-wOtldLcOuZg" message="_UETj4A67Ee-wOtldLcOuZg"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_i9IZUA67Ee-wOtldLcOuZg" name="Message10SendEvent" covered="_LgHVQA67Ee-wOtldLcOuZg" message="_i9HLMA67Ee-wOtldLcOuZg"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_i9JAYA67Ee-wOtldLcOuZg" name="Message10ReceiveEvent" covered="_MIdusA67Ee-wOtldLcOuZg" message="_i9HLMA67Ee-wOtldLcOuZg"/>
+    <fragment xmi:type="uml:BehaviorExecutionSpecification" xmi:id="_i9m6cA67Ee-wOtldLcOuZg" name="BehaviorExecutionSpecification13" covered="_MIdusA67Ee-wOtldLcOuZg" finish="_i9qk0A67Ee-wOtldLcOuZg" start="_i9JAYA67Ee-wOtldLcOuZg"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_i9qk0A67Ee-wOtldLcOuZg" name="Message15SendEvent" covered="_MIdusA67Ee-wOtldLcOuZg" message="_i9p9wA67Ee-wOtldLcOuZg"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_i9rL4A67Ee-wOtldLcOuZg" name="Message15ReceiveEvent" covered="_LgHVQA67Ee-wOtldLcOuZg" message="_i9p9wA67Ee-wOtldLcOuZg"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_r55gAA67Ee-wOtldLcOuZg" name="Message17SendEvent" covered="_LgHVQA67Ee-wOtldLcOuZg" message="_r5448A67Ee-wOtldLcOuZg"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_r55gAQ67Ee-wOtldLcOuZg" name="Message17ReceiveEvent" covered="_MIdusA67Ee-wOtldLcOuZg" message="_r5448A67Ee-wOtldLcOuZg"/>
+    <fragment xmi:type="uml:BehaviorExecutionSpecification" xmi:id="_r6ZPQA67Ee-wOtldLcOuZg" name="BehaviorExecutionSpecification20" covered="_MIdusA67Ee-wOtldLcOuZg" finish="_r6eHwA67Ee-wOtldLcOuZg" start="_r55gAQ67Ee-wOtldLcOuZg"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_r6eHwA67Ee-wOtldLcOuZg" name="Message22SendEvent" covered="_MIdusA67Ee-wOtldLcOuZg" message="_r6dgsA67Ee-wOtldLcOuZg"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_r6eu0A67Ee-wOtldLcOuZg" name="Message22ReceiveEvent" covered="_LgHVQA67Ee-wOtldLcOuZg" message="_r6dgsA67Ee-wOtldLcOuZg"/>
+    <message xmi:type="uml:Message" xmi:id="_UD1p0A67Ee-wOtldLcOuZg" name="Cliente ingresa en solicitar una reserva" receiveEvent="_UD238A67Ee-wOtldLcOuZg" sendEvent="_UD2Q4A67Ee-wOtldLcOuZg"/>
+    <message xmi:type="uml:Message" xmi:id="_UETj4A67Ee-wOtldLcOuZg" name="Sistema le pide que ingrese un hotel de una determinada ubicacion" messageSort="reply" receiveEvent="_UEUyAA67Ee-wOtldLcOuZg" sendEvent="_UEUK8A67Ee-wOtldLcOuZg"/>
+    <message xmi:type="uml:Message" xmi:id="_i9HLMA67Ee-wOtldLcOuZg" name="Cliente ingresa el hotel" receiveEvent="_i9JAYA67Ee-wOtldLcOuZg" sendEvent="_i9IZUA67Ee-wOtldLcOuZg"/>
+    <message xmi:type="uml:Message" xmi:id="_i9p9wA67Ee-wOtldLcOuZg" name="Sistema le muestra las fechas disponibles" messageSort="reply" receiveEvent="_i9rL4A67Ee-wOtldLcOuZg" sendEvent="_i9qk0A67Ee-wOtldLcOuZg"/>
+    <message xmi:type="uml:Message" xmi:id="_r5448A67Ee-wOtldLcOuZg" name="cliente ingresa una fecha y solicita reserva" receiveEvent="_r55gAQ67Ee-wOtldLcOuZg" sendEvent="_r55gAA67Ee-wOtldLcOuZg"/>
+    <message xmi:type="uml:Message" xmi:id="_r6dgsA67Ee-wOtldLcOuZg" name="sistema le reserva el hotel y la fecha seleccionada al cliente " messageSort="reply" receiveEvent="_r6eu0A67Ee-wOtldLcOuZg" sendEvent="_r6eHwA67Ee-wOtldLcOuZg"/>
+  </packagedElement>
+</uml:Model>
