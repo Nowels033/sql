@@ -5,21 +5,27 @@
   </packageImport>
   <packagedElement xmi:type="uml:Actor" xmi:id="_mvNPcAWJEe-q94fpZ3qM7Q" name="alumno"/>
   <packagedElement xmi:type="uml:Actor" xmi:id="_nxRJYAWJEe-q94fpZ3qM7Q" name="profesor"/>
-  <packagedElement xmi:type="uml:Class" xmi:id="_q43zgAWJEe-q94fpZ3qM7Q" name="Gestion de notas" useCase="_30zecAWJEe-q94fpZ3qM7Q _cCib8AWKEe-q94fpZ3qM7Q _j_H4AAWKEe-q94fpZ3qM7Q _rzOtgAWKEe-q94fpZ3qM7Q">
+  <packagedElement xmi:type="uml:Class" xmi:id="_q43zgAWJEe-q94fpZ3qM7Q" name="Gestion de notas" useCase="_30zecAWJEe-q94fpZ3qM7Q _cCib8AWKEe-q94fpZ3qM7Q _j_H4AAWKEe-q94fpZ3qM7Q _rzOtgAWKEe-q94fpZ3qM7Q _KX1x8BClEe-juJ4wwB6b-w">
     <ownedComment xmi:type="uml:Comment" xmi:id="_QVkpEAWLEe-q94fpZ3qM7Q">
       <body>El sistema detecta si eres alumno o profesor y segun tu tipo de usuario te deja consultar notas o listar por asignatura o registrar notas&#xD;
 </body>
     </ownedComment>
     <ownedUseCase xmi:type="uml:UseCase" xmi:id="_30zecAWJEe-q94fpZ3qM7Q" name="autentificar" subject="_q43zgAWJEe-q94fpZ3qM7Q">
-      <include xmi:type="uml:Include" xmi:id="_vd5BYAWKEe-q94fpZ3qM7Q" addition="_j_H4AAWKEe-q94fpZ3qM7Q"/>
-      <include xmi:type="uml:Include" xmi:id="_GZNGkAWLEe-q94fpZ3qM7Q" addition="_cCib8AWKEe-q94fpZ3qM7Q"/>
-      <include xmi:type="uml:Include" xmi:id="_O1Hi8AWLEe-q94fpZ3qM7Q" addition="_rzOtgAWKEe-q94fpZ3qM7Q"/>
+      <extend xmi:type="uml:Extend" xmi:id="_Fil6QBClEe-juJ4wwB6b-w" extendedCase="_cCib8AWKEe-q94fpZ3qM7Q" extensionLocation="_FimhUBClEe-juJ4wwB6b-w"/>
+      <extend xmi:type="uml:Extend" xmi:id="_GBLTsBClEe-juJ4wwB6b-w" extendedCase="_rzOtgAWKEe-q94fpZ3qM7Q" extensionLocation="_GBLTsRClEe-juJ4wwB6b-w"/>
+      <extend xmi:type="uml:Extend" xmi:id="_GoiOoBClEe-juJ4wwB6b-w" extendedCase="_j_H4AAWKEe-q94fpZ3qM7Q" extensionLocation="_Goi1sBClEe-juJ4wwB6b-w"/>
     </ownedUseCase>
-    <ownedUseCase xmi:type="uml:UseCase" xmi:id="_cCib8AWKEe-q94fpZ3qM7Q" name="Consultar notas" subject="_q43zgAWJEe-q94fpZ3qM7Q"/>
-    <ownedUseCase xmi:type="uml:UseCase" xmi:id="_j_H4AAWKEe-q94fpZ3qM7Q" name="Registrar nota" subject="_q43zgAWJEe-q94fpZ3qM7Q"/>
+    <ownedUseCase xmi:type="uml:UseCase" xmi:id="_cCib8AWKEe-q94fpZ3qM7Q" name="Consultar notas" subject="_q43zgAWJEe-q94fpZ3qM7Q">
+      <extensionPoint xmi:type="uml:ExtensionPoint" xmi:id="_FimhUBClEe-juJ4wwB6b-w" name="ExtensionPoint1"/>
+    </ownedUseCase>
+    <ownedUseCase xmi:type="uml:UseCase" xmi:id="_j_H4AAWKEe-q94fpZ3qM7Q" name="Registrar nota" subject="_q43zgAWJEe-q94fpZ3qM7Q">
+      <extensionPoint xmi:type="uml:ExtensionPoint" xmi:id="_Goi1sBClEe-juJ4wwB6b-w" name="ExtensionPoint1"/>
+    </ownedUseCase>
     <ownedUseCase xmi:type="uml:UseCase" xmi:id="_rzOtgAWKEe-q94fpZ3qM7Q" name="Listar notas de asignatura" subject="_q43zgAWJEe-q94fpZ3qM7Q">
       <extensionPoint xmi:type="uml:ExtensionPoint" xmi:id="_wMfMwAWKEe-q94fpZ3qM7Q" name="ExtensionPoint1"/>
+      <extensionPoint xmi:type="uml:ExtensionPoint" xmi:id="_GBLTsRClEe-juJ4wwB6b-w" name="ExtensionPoint2"/>
     </ownedUseCase>
+    <ownedUseCase xmi:type="uml:UseCase" xmi:id="_KX1x8BClEe-juJ4wwB6b-w" name="Registro" subject="_q43zgAWJEe-q94fpZ3qM7Q"/>
   </packagedElement>
   <packagedElement xmi:type="uml:Association" xmi:id="_9QGCcAWJEe-q94fpZ3qM7Q" memberEnd="_9QHQkAWJEe-q94fpZ3qM7Q _9QHQkQWJEe-q94fpZ3qM7Q">
     <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_9QGpgAWJEe-q94fpZ3qM7Q" source="org.eclipse.papyrus">
@@ -34,5 +40,13 @@
     </eAnnotations>
     <ownedEnd xmi:type="uml:Property" xmi:id="_Fd8YMAWLEe-q94fpZ3qM7Q" name="autentificar" type="_30zecAWJEe-q94fpZ3qM7Q" association="_Fd7KEAWLEe-q94fpZ3qM7Q"/>
     <ownedEnd xmi:type="uml:Property" xmi:id="_Fd8YMQWLEe-q94fpZ3qM7Q" name="alumno" type="_mvNPcAWJEe-q94fpZ3qM7Q" association="_Fd7KEAWLEe-q94fpZ3qM7Q"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Actor" xmi:id="_H_uEABClEe-juJ4wwB6b-w" name="usuario no registrado"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_NLXCcBClEe-juJ4wwB6b-w" memberEnd="_NLYQkhClEe-juJ4wwB6b-w _NLYQkxClEe-juJ4wwB6b-w">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_NLYQkBClEe-juJ4wwB6b-w" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_NLYQkRClEe-juJ4wwB6b-w" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_NLYQkhClEe-juJ4wwB6b-w" name="registro" type="_KX1x8BClEe-juJ4wwB6b-w" association="_NLXCcBClEe-juJ4wwB6b-w"/>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_NLYQkxClEe-juJ4wwB6b-w" name="usuario no registrado" type="_H_uEABClEe-juJ4wwB6b-w" association="_NLXCcBClEe-juJ4wwB6b-w"/>
   </packagedElement>
 </uml:Model>

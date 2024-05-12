@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_zw6IsBChEe-juJ4wwB6b-w" name="listarnotasasignatura">
+  <packageImport xmi:type="uml:PackageImport" xmi:id="_zxxEUBChEe-juJ4wwB6b-w">
+    <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
+  </packageImport>
+  <packagedElement xmi:type="uml:Interaction" xmi:id="_zxKnYBChEe-juJ4wwB6b-w" name="Listar notas de asignatura">
+    <lifeline xmi:type="uml:Lifeline" xmi:id="_2CnsoBChEe-juJ4wwB6b-w" name="Profesor" coveredBy="_6U_gwBChEe-juJ4wwB6b-w _6VaXgRChEe-juJ4wwB6b-w _DyXaIRCiEe-juJ4wwB6b-w _Dy17QBCiEe-juJ4wwB6b-w"/>
+    <lifeline xmi:type="uml:Lifeline" xmi:id="_2j_UUBChEe-juJ4wwB6b-w" name="sistema" coveredBy="_6U_gwRChEe-juJ4wwB6b-w _6VaXgBChEe-juJ4wwB6b-w _DyYBMBCiEe-juJ4wwB6b-w _VTJJQBCiEe-juJ4wwB6b-w _VT4wIBCiEe-juJ4wwB6b-w _Dy1UMRCiEe-juJ4wwB6b-w _6VWtIBChEe-juJ4wwB6b-w _Dyy38BCiEe-juJ4wwB6b-w"/>
+    <lifeline xmi:type="uml:Lifeline" xmi:id="_2-TRwBChEe-juJ4wwB6b-w" name="BD" coveredBy="_VTJwUBCiEe-juJ4wwB6b-w _VT4JEBCiEe-juJ4wwB6b-w _VTz3oBCiEe-juJ4wwB6b-w"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_6U_gwBChEe-juJ4wwB6b-w" name="Message4SendEvent" covered="_2CnsoBChEe-juJ4wwB6b-w" message="_6U-5sBChEe-juJ4wwB6b-w"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_6U_gwRChEe-juJ4wwB6b-w" name="Message4ReceiveEvent" covered="_2j_UUBChEe-juJ4wwB6b-w" message="_6U-5sBChEe-juJ4wwB6b-w"/>
+    <fragment xmi:type="uml:BehaviorExecutionSpecification" xmi:id="_6VWtIBChEe-juJ4wwB6b-w" name="BehaviorExecutionSpecification7" covered="_2j_UUBChEe-juJ4wwB6b-w" finish="_6VaXgBChEe-juJ4wwB6b-w" start="_6U_gwRChEe-juJ4wwB6b-w"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_6VaXgBChEe-juJ4wwB6b-w" name="Message9SendEvent" covered="_2j_UUBChEe-juJ4wwB6b-w" message="_6VZwcBChEe-juJ4wwB6b-w"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_6VaXgRChEe-juJ4wwB6b-w" name="Message9ReceiveEvent" covered="_2CnsoBChEe-juJ4wwB6b-w" message="_6VZwcBChEe-juJ4wwB6b-w"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_DyYBMBCiEe-juJ4wwB6b-w" name="Message11ReceiveEvent" covered="_2j_UUBChEe-juJ4wwB6b-w" message="_DyXaIBCiEe-juJ4wwB6b-w"/>
+    <fragment xmi:type="uml:BehaviorExecutionSpecification" xmi:id="_Dyy38BCiEe-juJ4wwB6b-w" name="BehaviorExecutionSpecification14" covered="_2j_UUBChEe-juJ4wwB6b-w" finish="_Dy1UMRCiEe-juJ4wwB6b-w" start="_DyYBMBCiEe-juJ4wwB6b-w"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_DyXaIRCiEe-juJ4wwB6b-w" name="Message11SendEvent" covered="_2CnsoBChEe-juJ4wwB6b-w" message="_DyXaIBCiEe-juJ4wwB6b-w"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_VTJJQBCiEe-juJ4wwB6b-w" name="Message18SendEvent" covered="_2j_UUBChEe-juJ4wwB6b-w" message="_VTIiMBCiEe-juJ4wwB6b-w"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_VTJwUBCiEe-juJ4wwB6b-w" name="Message18ReceiveEvent" covered="_2-TRwBChEe-juJ4wwB6b-w" message="_VTIiMBCiEe-juJ4wwB6b-w"/>
+    <fragment xmi:type="uml:BehaviorExecutionSpecification" xmi:id="_VTz3oBCiEe-juJ4wwB6b-w" name="BehaviorExecutionSpecification21" covered="_2-TRwBChEe-juJ4wwB6b-w" finish="_VT4JEBCiEe-juJ4wwB6b-w" start="_VTJwUBCiEe-juJ4wwB6b-w"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_VT4JEBCiEe-juJ4wwB6b-w" name="Message23SendEvent" covered="_2-TRwBChEe-juJ4wwB6b-w" message="_VT3iABCiEe-juJ4wwB6b-w"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_VT4wIBCiEe-juJ4wwB6b-w" name="Message23ReceiveEvent" covered="_2j_UUBChEe-juJ4wwB6b-w" message="_VT3iABCiEe-juJ4wwB6b-w"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_Dy1UMRCiEe-juJ4wwB6b-w" name="Message16SendEvent" covered="_2j_UUBChEe-juJ4wwB6b-w" message="_Dy1UMBCiEe-juJ4wwB6b-w"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_Dy17QBCiEe-juJ4wwB6b-w" name="Message16ReceiveEvent" covered="_2CnsoBChEe-juJ4wwB6b-w" message="_Dy1UMBCiEe-juJ4wwB6b-w"/>
+    <message xmi:type="uml:Message" xmi:id="_6U-5sBChEe-juJ4wwB6b-w" name="Profesor indica que quiere consultar notas de una asignatura" receiveEvent="_6U_gwRChEe-juJ4wwB6b-w" sendEvent="_6U_gwBChEe-juJ4wwB6b-w"/>
+    <message xmi:type="uml:Message" xmi:id="_6VZwcBChEe-juJ4wwB6b-w" name="sistema pide que indique curso y asignatura" messageSort="reply" receiveEvent="_6VaXgRChEe-juJ4wwB6b-w" sendEvent="_6VaXgBChEe-juJ4wwB6b-w"/>
+    <message xmi:type="uml:Message" xmi:id="_DyXaIBCiEe-juJ4wwB6b-w" name="Profesor indica curso y asignatura" receiveEvent="_DyYBMBCiEe-juJ4wwB6b-w" sendEvent="_DyXaIRCiEe-juJ4wwB6b-w"/>
+    <message xmi:type="uml:Message" xmi:id="_Dy1UMBCiEe-juJ4wwB6b-w" name="Sistema le muestra el listado de alumnos y sus notas" messageSort="reply" receiveEvent="_Dy17QBCiEe-juJ4wwB6b-w" sendEvent="_Dy1UMRCiEe-juJ4wwB6b-w"/>
+    <message xmi:type="uml:Message" xmi:id="_VTIiMBCiEe-juJ4wwB6b-w" name="sistema le pide a la BD una lista de los alumnos de la asignatura X junto con sus respectivas notas" receiveEvent="_VTJwUBCiEe-juJ4wwB6b-w" sendEvent="_VTJJQBCiEe-juJ4wwB6b-w"/>
+    <message xmi:type="uml:Message" xmi:id="_VT3iABCiEe-juJ4wwB6b-w" name="BD envia el listado" messageSort="reply" receiveEvent="_VT4wIBCiEe-juJ4wwB6b-w" sendEvent="_VT4JEBCiEe-juJ4wwB6b-w"/>
+  </packagedElement>
+</uml:Model>

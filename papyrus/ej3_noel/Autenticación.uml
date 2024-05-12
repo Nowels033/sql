@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_GmkKoBCjEe-juJ4wwB6b-w" name="Autenticación">
+  <packageImport xmi:type="uml:PackageImport" xmi:id="_GnZ4IBCjEe-juJ4wwB6b-w">
+    <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
+  </packageImport>
+  <packagedElement xmi:type="uml:Interaction" xmi:id="_Gm3soBCjEe-juJ4wwB6b-w" name="Autenticación">
+    <lifeline xmi:type="uml:Lifeline" xmi:id="_I5zYkBCjEe-juJ4wwB6b-w" name="usuario no autenticado" coveredBy="_QJ3F0BCjEe-juJ4wwB6b-w _QKUY0BCjEe-juJ4wwB6b-w _e_TQERCjEe-juJ4wwB6b-w _e_v8ABCjEe-juJ4wwB6b-w"/>
+    <lifeline xmi:type="uml:Lifeline" xmi:id="_Jm6WMBCjEe-juJ4wwB6b-w" name="sistema" coveredBy="_QJ3s4BCjEe-juJ4wwB6b-w _QKTxwBCjEe-juJ4wwB6b-w _e_T3IBCjEe-juJ4wwB6b-w _e_vU8BCjEe-juJ4wwB6b-w _QKQucBCjEe-juJ4wwB6b-w _e_s4sBCjEe-juJ4wwB6b-w"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_QJ3F0BCjEe-juJ4wwB6b-w" name="Message3SendEvent" covered="_I5zYkBCjEe-juJ4wwB6b-w" message="_QJ2ewBCjEe-juJ4wwB6b-w"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_QJ3s4BCjEe-juJ4wwB6b-w" name="Message3ReceiveEvent" covered="_Jm6WMBCjEe-juJ4wwB6b-w" message="_QJ2ewBCjEe-juJ4wwB6b-w"/>
+    <fragment xmi:type="uml:BehaviorExecutionSpecification" xmi:id="_QKQucBCjEe-juJ4wwB6b-w" name="BehaviorExecutionSpecification6" covered="_Jm6WMBCjEe-juJ4wwB6b-w" finish="_QKTxwBCjEe-juJ4wwB6b-w" start="_QJ3s4BCjEe-juJ4wwB6b-w"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_e_vU8BCjEe-juJ4wwB6b-w" name="Message15SendEvent" covered="_Jm6WMBCjEe-juJ4wwB6b-w" message="_e_ut4BCjEe-juJ4wwB6b-w"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_e_v8ABCjEe-juJ4wwB6b-w" name="Message15ReceiveEvent" covered="_I5zYkBCjEe-juJ4wwB6b-w" message="_e_ut4BCjEe-juJ4wwB6b-w"/>
+    <fragment xmi:type="uml:CombinedFragment" xmi:id="_v3QEoBCjEe-juJ4wwB6b-w" name="CombinedFragment17" interactionOperator="loop">
+      <operand xmi:type="uml:InteractionOperand" xmi:id="_v3QrsBCjEe-juJ4wwB6b-w" name="InteractionOperand0">
+        <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_QKTxwBCjEe-juJ4wwB6b-w" name="Message8SendEvent" covered="_Jm6WMBCjEe-juJ4wwB6b-w" message="_QKTKsBCjEe-juJ4wwB6b-w"/>
+        <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_QKUY0BCjEe-juJ4wwB6b-w" name="Message8ReceiveEvent" covered="_I5zYkBCjEe-juJ4wwB6b-w" message="_QKTKsBCjEe-juJ4wwB6b-w"/>
+        <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_e_TQERCjEe-juJ4wwB6b-w" name="Message10SendEvent" covered="_I5zYkBCjEe-juJ4wwB6b-w" message="_e_TQEBCjEe-juJ4wwB6b-w"/>
+        <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_e_T3IBCjEe-juJ4wwB6b-w" name="Message10ReceiveEvent" covered="_Jm6WMBCjEe-juJ4wwB6b-w" message="_e_TQEBCjEe-juJ4wwB6b-w"/>
+        <fragment xmi:type="uml:BehaviorExecutionSpecification" xmi:id="_e_s4sBCjEe-juJ4wwB6b-w" name="BehaviorExecutionSpecification13" covered="_Jm6WMBCjEe-juJ4wwB6b-w" finish="_e_vU8BCjEe-juJ4wwB6b-w" start="_e_T3IBCjEe-juJ4wwB6b-w"/>
+        <guard xmi:type="uml:InteractionConstraint" xmi:id="_v3QrsRCjEe-juJ4wwB6b-w" name="guard">
+          <specification xmi:type="uml:LiteralString" xmi:id="_4qOWIBCjEe-juJ4wwB6b-w" value="hasta que los datos sean correctos"/>
+        </guard>
+      </operand>
+    </fragment>
+    <message xmi:type="uml:Message" xmi:id="_QJ2ewBCjEe-juJ4wwB6b-w" name="usuario pide autenticarse" receiveEvent="_QJ3s4BCjEe-juJ4wwB6b-w" sendEvent="_QJ3F0BCjEe-juJ4wwB6b-w"/>
+    <message xmi:type="uml:Message" xmi:id="_QKTKsBCjEe-juJ4wwB6b-w" name="sistema solicita los datos usuario y contraseña" messageSort="reply" receiveEvent="_QKUY0BCjEe-juJ4wwB6b-w" sendEvent="_QKTxwBCjEe-juJ4wwB6b-w"/>
+    <message xmi:type="uml:Message" xmi:id="_e_TQEBCjEe-juJ4wwB6b-w" name="usuario introduce los datos" receiveEvent="_e_T3IBCjEe-juJ4wwB6b-w" sendEvent="_e_TQERCjEe-juJ4wwB6b-w"/>
+    <message xmi:type="uml:Message" xmi:id="_e_ut4BCjEe-juJ4wwB6b-w" name="verifica datos y tipo de usuario y muestra las funciones que puede realizar" messageSort="reply" receiveEvent="_e_v8ABCjEe-juJ4wwB6b-w" sendEvent="_e_vU8BCjEe-juJ4wwB6b-w"/>
+  </packagedElement>
+</uml:Model>
