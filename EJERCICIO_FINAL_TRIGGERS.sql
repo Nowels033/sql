@@ -176,9 +176,9 @@ declare continue handler for not found set done = true;
 open cursor1;
 
 loop_empleado: LOOP
-fetch cursor1 into emp_no;
+	fetch cursor1 into emp_no;
 if done then
-leave loop_empleado;
+	leave loop_empleado;
 end if;
 
 insert into registrosborrados(descripcion)
@@ -186,11 +186,15 @@ values (concat('Se ha eliminado la sala con codigo:' , old.sala_cod, '. Numero d
 end loop loop_empleado;
 close cursor1;
 
-delete from plantilla where sala_cod = old.sala_cod = old.Sala_Cod;
+DELETE FROM plantilla 
+WHERE
+    sala_cod = old.sala_cod;
 end
 $$
-
-DELETE FROM Sala WHERE sala_cod = 1;
+delimiter ;
+DELETE FROM Sala 
+WHERE
+    sala_cod = 1;
 
 
 
