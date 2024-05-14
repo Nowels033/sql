@@ -154,21 +154,43 @@ Ejercicios Trigger
 1) Crear un Trigger que borre en cascada sobre la tabla relacionada cuando borremos una sala.
 Mostrar el registro borrado al ejecutar el Trigger.
 
-delimiter $$
-    
-    create trigger borrarEnCascadaSala after delete on sala
-    for each row
-    begin
-    
-   -- SELECT * from plantilla join sala on sala.sala_cod = plantilla.sala_cod where sala.sala_cod = old.sala_cod;
-    
-    delete from plantilla where plantilla.sala_cod = old.sala_cod;
+truncate registrosborrados;
+create table registrosBorrados (
+id int auto_increment,
+descripcion varchar (255), primary key (id));
 
-    end
-    $$
-    
-   delimiter ;
-DELETE from sala where sala_cod = 1;
+
+delimiter $$
+drop trigger if exists borradoSala$$
+create trigger borradoSala after delete on sala 
+for each row
+begin
+declare emp_no int;
+declare done int default false;
+
+declare cursor1 cursor for 
+	select Empleado_No from plantilla where Sala_Cod = old.Sala_Cod;
+
+declare continue handler for not found set done = true;
+
+open cursor1;
+
+loop_empleado: LOOP
+fetch cursor1 into emp_no;
+if done then
+leave loop_empleado;
+end if;
+
+insert into registrosborrados(descripcion)
+values (concat('Se ha eliminado la sala con codigo:' , old.sala_cod, '. Numero de empleado afectado: ', emp_no));
+end loop loop_empleado;
+close cursor1;
+
+delete from plantilla where sala_cod = old.sala_cod = old.Sala_Cod;
+end
+$$
+
+DELETE FROM Sala WHERE sala_cod = 1;
 
 
 
@@ -182,6 +204,7 @@ delimiter $$
     for each row
     begin
     
+    update plantilla set plantilla.sala_cod = new.sala_cod where plantilla.sala_cod=old.sala_cod;
    
 
     end
