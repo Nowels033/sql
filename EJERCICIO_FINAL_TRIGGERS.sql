@@ -202,19 +202,36 @@ Ejercicios Trigger
 2) Crear un Trigger que se active cuando Actualicemos alguna sala del hospital, modificando sus
 tablas relacionadas. Mostrar el registro Actualizado.
 
+create table registrosActualizados (
+id int auto_increment,
+descripcion varchar (255), primary key (id));
+
+
 delimiter $$
     
-    create trigger actualizarSala after update on sala
-    for each row
-    begin
-    
-    update plantilla set plantilla.sala_cod = new.sala_cod where plantilla.sala_cod=old.sala_cod;
-   
+create trigger actualizarSala after update on sala
+for each row
+begin
+
+if old.sala_cod != new.sala_cod or old.hospital_cod != new.hospital_cod or old.nombre != new.nombre 
+or old.num_cam != new.num_cam then
+
+insert into registrosactualizados(descripcion)
+values (concat('Se ha modificado la sala con codigo: ' , old.sala_cod, ' por numero de sala: '
+, new.sala_cod,' se cambio el nombre de ',' el codigo de hospital : ',old.hospital_cod,' se cambio por ',
+new.hospital_cod,' el nombre de la sala : ',old.nombre,' por : ',new.nombre));
+
+update plantilla set plantilla.sala_cod = new.sala_cod where plantilla.sala_cod=old.sala_cod;
+end if;
 
     end
     $$
     
    delimiter ;
+   
+   update sala set sala_cod=10 where sala_cod = 1;
+   
+   select * from registrosactualizados;
 
 
 Ejercicios Trigger
