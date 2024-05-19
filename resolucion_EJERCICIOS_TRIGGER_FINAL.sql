@@ -40,7 +40,7 @@ DELIMITER ;
 DELETE FROM Sala WHERE Sala_Cod = 1;
 2) Crear un Trigger que se active cuando actualicemos alguna sala del hospital, modificando sus tablas relacionadas. Mostrar el registro actualizado.
 sql
-Copiar código
+
 CREATE TABLE registrosActualizados (
     id INT AUTO_INCREMENT,
     descripcion VARCHAR(255),
@@ -145,28 +145,29 @@ DELIMITER ;
 
 
 4) Crear un Trigger para controlar la inserción de empleados, copiando datos sobre la inserción en una tabla llamada Control_BD.
-sql
-Copiar código
+
 CREATE TABLE Control_BD (
     id INT AUTO_INCREMENT,
     emp_no INT,
     usuario VARCHAR(50),
-    fecha TIMESTAMP,
+    fecha date,
     tipo_operacion VARCHAR(50),
     PRIMARY KEY (id)
 );
-
+drop trigger insercionEmpleados;
 DELIMITER $$
 CREATE TRIGGER insercionEmpleados AFTER INSERT ON Emp
 FOR EACH ROW
 BEGIN
     INSERT INTO Control_BD (emp_no, usuario, fecha, tipo_operacion)
-    VALUES (NEW.Emp_No, USER(), NOW(), 'INSERT');
+    VALUES (NEW.Emp_No, USER(), curdate(), 'INSERT');
 END$$
 DELIMITER ;
+
+insert into emp values(1,'dominguez','empleado',7902,curdate(),30.000,0,20);
+
 5) Crear un Trigger que actúe cuando se modifique la tabla hospital y sobre todas las tablas con las que esté relacionadas.
-sql
-Copiar código
+
 DELIMITER $$
 CREATE TRIGGER modificarHospital AFTER UPDATE ON Hospital
 FOR EACH ROW
@@ -176,18 +177,22 @@ BEGIN
     UPDATE Sala SET Hospital_Cod = NEW.Hospital_Cod WHERE Hospital_Cod = OLD.Hospital_Cod;
 END$$
 DELIMITER ;
+
+update hospital set hospital_cod=20 where hospital_cod=19;
+
+
 6) Crear un Trigger en la tabla Plantilla para verificar que el hospital existe antes de actualizar el código del hospital.
-sql
-Copiar código
+
+drop trigger actualizarPlantilla;
 DELIMITER $$
 CREATE TRIGGER actualizarPlantilla BEFORE UPDATE ON Plantilla
 FOR EACH ROW
 BEGIN
     DECLARE hospital_exists INT;
 
-    SELECT COUNT(*) INTO hospital_exists
+    set hospital_exists = (SELECT COUNT(*) 
     FROM Hospital
-    WHERE Hospital_Cod = NEW.Hospital_Cod;
+    WHERE Hospital_Cod = new.Hospital_Cod);
 
     IF hospital_exists = 0 THEN
         SIGNAL SQLSTATE '45000'
@@ -195,9 +200,14 @@ BEGIN
     END IF;
 END$$
 DELIMITER ;
+
+update plantilla set hospital_cod = 1 where hospital_cod =  500;
+SELECT COUNT(*) 
+    FROM Hospital
+    WHERE Hospital_Cod =1;
+
 7) Modificar el Trigger del ejercicio 4, utilizando transacciones y control de errores.
-sql
-Copiar código
+
 DELIMITER $$
 CREATE TRIGGER insercionEmpleadosTrans AFTER INSERT ON Emp
 FOR EACH ROW
@@ -211,19 +221,20 @@ BEGIN
     START TRANSACTION;
 
     INSERT INTO Control_BD (emp_no, usuario, fecha, tipo_operacion)
-    VALUES (NEW.Emp_No, USER(), NOW(), 'INSERT');
+    VALUES (NEW.Emp_No, USER(), curdate(), 'INSERT');
 
     COMMIT;
 END$$
 DELIMITER ;
+
+
 8) Crear un Trigger que guarde los datos en la tabla controlTrigger cuando se realice la baja de un empleado.
-sql
-Copiar código
+
 CREATE TABLE ControlTrigger (
     id INT AUTO_INCREMENT,
     emp_no INT,
     usuario VARCHAR(50),
-    fecha TIMESTAMP,
+    fecha date,
     tipo_operacion VARCHAR(50),
     PRIMARY KEY (id)
 );
@@ -236,16 +247,18 @@ BEGIN
     VALUES (OLD.Emp_No, USER(), NOW(), 'DELETE');
 END$$
 DELIMITER ;
+
+delete from emp where emp_no = 1;
+
 9) Crear un Trigger que guarde los datos en la tabla ControlTrigger cuando se realice una modificación en un empleado.
-sql
-Copiar código
-ALTER TABLE ControlTrigger ADD COLUMN hora_actualizacion TIME;
+
+
 
 DELIMITER $$
 CREATE TRIGGER modificarEmpleados AFTER UPDATE ON Emp
 FOR EACH ROW
 BEGIN
     INSERT INTO ControlTrigger (emp_no, usuario, fecha, tipo_operacion, hora_actualizacion)
-    VALUES (NEW.Emp_No, USER(), NOW(), 'UPDATE', CURTIME());
+    VALUES (NEW.Emp_No, USER(), NOW(), concat('update','se cambio ',old.emp_no, 'por : ',new.emp_no), CURTIME());
 END$$
 DELIMITER ;
