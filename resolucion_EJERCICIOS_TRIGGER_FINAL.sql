@@ -1,6 +1,5 @@
 1) Crear un Trigger que borre en cascada sobre la tabla relacionada cuando borremos una sala y mostrar el registro borrado al ejecutar el Trigger.
-sql
-Copiar código
+
 CREATE TABLE registrosBorrados (
     id INT AUTO_INCREMENT,
     descripcion VARCHAR(255),
@@ -39,7 +38,7 @@ DELIMITER ;
 
 DELETE FROM Sala WHERE Sala_Cod = 1;
 2) Crear un Trigger que se active cuando actualicemos alguna sala del hospital, modificando sus tablas relacionadas. Mostrar el registro actualizado.
-sql
+
 
 CREATE TABLE registrosActualizados (
     id INT AUTO_INCREMENT,
