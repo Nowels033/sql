@@ -1,0 +1,24 @@
+enable 
+configure terminal
+router rip
+version 2
+network nombredelaredquetieneconectada
+exit
+
+enable 
+configure terminal
+interface g..... .10
+encapsulation dot1q 10
+ip address puertadeenlace mascaradered
+no shutdown
+exit
+
+enable 
+configure terminal
+ip dhcp pool vlan10
+network nombredered mascaradered
+dns-server ipservidordns
+default-router ippuertadeenlacedelared
+exit
+
+

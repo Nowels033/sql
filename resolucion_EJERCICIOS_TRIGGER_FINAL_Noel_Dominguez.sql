@@ -97,7 +97,7 @@ UPDATE Sala SET Sala_Cod = 10 WHERE Sala_Cod = 1;
 
 SELECT * FROM registrosactualizados;
 3) Crear un Trigger que se active al eliminar un registro en la tabla hospital y modifique las tablas correspondientes.
-sql
+
 select plantilla.empleado_no,doctor.doctor_no,sala.sala_cod 
 	from sala join doctor on sala.hospital_cod = doctor.hospital_cod join plantilla on plantilla.hospital_cod = doctor.hospital_cod 
     join hospital on hospital.hospital_cod = plantilla.hospital_cod where hospital.hospital_cod =19;
