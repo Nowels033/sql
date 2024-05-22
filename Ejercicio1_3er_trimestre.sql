@@ -144,10 +144,8 @@ DELIMITER $$
 DROP PROCEDURE IF EXISTS notaV3$$
 CREATE PROCEDURE notaV3 (in numero real,out salida varchar (30))
 BEGIN
-
-
 case numero
-when numero >=0 and numero < 5
+	when numero >=0 and numero < 5
 	THEN SET salida= "insufuciente" ;
     when numero >= 5 and numero <=6 THEN
 		SET salida= "Aprobado" ;
@@ -162,6 +160,22 @@ when numero >=0 and numero < 5
 	end case;
 END
 $$
+DELIMITER $$
+
+DROP PROCEDURE IF EXISTS notaV3$$
+
+CREATE PROCEDURE notaV3 (IN numero REAL, OUT salida VARCHAR(30))
+BEGIN
+    SET salida = CASE 
+        WHEN numero >= 0 AND numero < 5 THEN 'Insuficiente'
+        WHEN numero >= 5 AND numero <= 6 THEN 'Aprobado'
+        WHEN numero > 6 AND numero <= 7 THEN 'Bien'
+        WHEN numero > 7 AND numero <= 9 THEN 'Notable'
+        WHEN numero > 9 AND numero <= 10 THEN 'Sobresaliente'
+        ELSE 'Nota negativa o superior a 10'
+    END;
+END$$
+
 DELIMITER ;
 call notaV3(5,@nota);
 SELECT @nota;
@@ -180,7 +194,6 @@ DELIMITER $$
 DROP PROCEDURE IF EXISTS dias$$
 CREATE PROCEDURE dias (in numero real)
 BEGIN
-
 
 case numero
 when numero = 1 
@@ -616,7 +629,7 @@ begin
     end case;
 end$$
 DELIMITER ;
-
+SET GLOBAL log_bin_trust_function_creators = 1;
 
 
 select dia_semana(1),dia_semana(2),dia_semana(3),dia_semana(4),dia_semana(5),dia_semana(6),dia_semana(7);

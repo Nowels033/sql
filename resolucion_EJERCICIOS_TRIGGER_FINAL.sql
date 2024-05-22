@@ -258,6 +258,159 @@ CREATE TRIGGER modificarEmpleados AFTER UPDATE ON Emp
 FOR EACH ROW
 BEGIN
     INSERT INTO ControlTrigger (emp_no, usuario, fecha, tipo_operacion, hora_actualizacion)
-    VALUES (NEW.Emp_No, USER(), NOW(), concat('update','se cambio ',old.emp_no, 'por : ',new.emp_no), CURTIME());
+    VALUES (NEW.Emp_No, USER(), NOW(),'update', CURTIME());
 END$$
+DELIMITER ;
+
+DELIMITER //
+
+CREATE PROCEDURE ControlErroresYTransaccion()
+BEGIN
+    DECLARE CONTINUE HANDLER FOR SQLEXCEPTION
+    BEGIN
+        -- Declarar variables para manejar el error
+        DECLARE sqlstate_value CHAR(5);
+        DECLARE mysql_error_code INT;
+
+        -- Capturar los valores de SQLSTATE y código de error
+        GET DIAGNOSTICS CONDITION 1
+        sqlstate_value = RETURNED_SQLSTATE, mysql_error_code = MYSQL_ERRNO;
+
+        -- Manejo del error específico 46000
+        IF mysql_error_code = 46000 THEN
+            -- Manejo del error
+            ROLLBACK;
+            SELECT 'Se produjo el error 46000, se realizó ROLLBACK' AS Mensaje;
+        ELSE
+            -- Otros errores
+            ROLLBACK;
+            SELECT CONCAT('Se produjo un error con código: ', mysql_error_code, ', se realizó ROLLBACK') AS Mensaje;
+        END IF;
+    END;
+
+    START TRANSACTION;
+
+    BEGIN
+        -- Bloque de transacción
+        INSERT INTO tabla1 (columna1, columna2) VALUES ('valor1', 'valor2');
+        
+        -- Esta inserción generará un error si 'valor1' ya existe en tabla2.columna1
+        INSERT INTO tabla2 (columna1, columna2) VALUES ('valor1', 'valor2');
+
+        -- Confirma la transacción
+        COMMIT;
+        SELECT 'Transacción completada con éxito' AS Mensaje;
+    END;
+END //
+
+DELIMITER ;
+
+
+delimiter //
+CREATE PROCEDURE ControlErroresYTransaccion()
+BEGIN
+    DECLARE EXIT HANDLER FOR SQLEXCEPTION
+    BEGIN
+        -- Manejo del error
+        ROLLBACK;
+        SELECT 'Se produjo un error, se realizó ROLLBACK' AS Mensaje;
+    END;
+
+    DECLARE EXIT HANDLER FOR SQLWARNING
+    BEGIN
+        -- Manejo de advertencias
+        ROLLBACK;
+        SELECT 'Se produjo una advertencia, se realizó ROLLBACK' AS Mensaje;
+    END;
+
+    START TRANSACTION;
+
+    BEGIN
+        -- Bloque de transacción
+        INSERT INTO tabla1 (columna1, columna2) VALUES ('valor1', 'valor2');
+        
+        -- Esta inserción generará un error si 'valor1' ya existe en tabla2.columna1
+        INSERT INTO tabla2 (columna1, columna2) VALUES ('valor1', 'valor2');
+
+        -- Confirma la transacción
+        COMMIT;
+        SELECT 'Transacción completada con éxito' AS Mensaje;
+    END;
+END //
+
+DELIMITER ;
+
+
+
+DELIMITER //
+
+CREATE FUNCTION InsertarEnTabla1(val1 VARCHAR(50), val2 VARCHAR(50)) 
+RETURNS INT
+DETERMINISTIC
+BEGIN
+    DECLARE EXIT HANDLER FOR SQLEXCEPTION
+    BEGIN
+        RETURN 1; -- Código de error
+    END;
+
+    INSERT INTO tabla1 (columna1, columna2) VALUES (val1, val2);
+    RETURN 0; -- Éxito
+END //
+
+DELIMITER ;
+Crear Función con Manejo de Errores Específicos en una Transacción
+Vamos a crear otra función similar para tabla2:
+
+sql
+Copiar código
+DELIMITER //
+
+CREATE FUNCTION InsertarEnTabla2(val1 VARCHAR(50), val2 VARCHAR(50)) 
+RETURNS INT
+DETERMINISTIC
+BEGIN
+    DECLARE EXIT HANDLER FOR SQLEXCEPTION
+    BEGIN
+        RETURN 1; -- Código de error
+    END;
+
+    INSERT INTO tabla2 (columna1, columna2) VALUES (val1, val2);
+    RETURN 0; -- Éxito
+END //
+
+DELIMITER ;
+Crear Procedimiento con Control de Transacciones y Manejo de Errores
+Finalmente, vamos a crear un procedimiento que llame a estas funciones y maneje la transacción:
+
+sql
+Copiar código
+DELIMITER //
+
+CREATE PROCEDURE ControlErroresYTransaccion()
+BEGIN
+    DECLARE resultado1 INT;
+    DECLARE resultado2 INT;
+
+    START TRANSACTION;
+
+    -- Llamar a la función InsertarEnTabla1
+    SET resultado1 = InsertarEnTabla1('valor1', 'valor2');
+    IF resultado1 != 0 THEN
+        ROLLBACK;
+        SELECT 'Error en la inserción en tabla1, se realizó ROLLBACK' AS Mensaje;
+        leave ;
+    END IF;
+
+    -- Llamar a la función InsertarEnTabla2
+    SET resultado2 = InsertarEnTabla2('valor1', 'valor2');
+    IF resultado2 != 0 THEN
+        ROLLBACK;
+        SELECT 'Error en la inserción en tabla2, se realizó ROLLBACK' AS Mensaje;
+        LEAVE;
+    END IF;
+
+    COMMIT;
+    SELECT 'Transacción completada con éxito' AS Mensaje;
+END //
+
 DELIMITER ;
