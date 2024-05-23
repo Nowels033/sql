@@ -1,7 +1,7 @@
-Ejercicios Trigger
-create database hospitalEjercicioTrigger;
-use hospitalEjercicioTrigger;
+CREATE DATABASE hospital2;
+use hospital2;
 
+-- CREATE TABLE
 CREATE TABLE Dept
 (Dept_No INT NOT NULL,
 DNombre VARCHAR(50) NULL,
@@ -17,25 +17,19 @@ Salario NUMERIC(9,2) NULL,
 Comision NUMERIC(9,2) NULL,
 Dept_No INT NULL);
 
-Ejercicios Trigger
-
-CREATE TABLE Hospital
-(Hospital_Cod INT NOT NULL,
+CREATE TABLE Hospital(
+Hospital_Cod INT NOT NULL,
 Nombre VARCHAR(50) NULL,
 Direccion VARCHAR(50) NULL,
 Telefono VARCHAR(50) NULL,
 Num_Cama INT NULL);
 
-
-CREATE TABLE Doctor
-(
+CREATE TABLE Doctor(
 Doctor_No INT NOT NULL,
 Hospital_Cod INT NOT NULL,
 Apellido VARCHAR(50) NULL,
 Especialidad VARCHAR(50) NULL
 );
-
-Ejercicios Trigger
 
 CREATE TABLE Sala
 (Sala_Cod INT NOT NULL,
@@ -43,6 +37,7 @@ Hospital_Cod INT NOT NULL,
 Nombre VARCHAR(50) NULL,
 Num_Cam INT NULL
 );
+
 CREATE TABLE Plantilla
 (Empleado_No INT NOT NULL,
 Sala_Cod INT NOT NULL,
@@ -52,9 +47,8 @@ Funcion VARCHAR(50) NULL,
 T VARCHAR(15) NULL,
 Salario NUMERIC(9,2) NULL
 );
-Ejercicios Trigger
-CREATE TABLE Enfermo
-(
+
+CREATE TABLE Enfermo(
 Inscripcion INT NOT NULL,
 Apellido VARCHAR(50) NULL,
 Direccion VARCHAR(50) NULL,
@@ -62,14 +56,15 @@ Fecha_Nac VARCHAR(50) NULL,
 S VARCHAR(2) NULL,
 NSS INT NULL
 );
-Ejercicios Trigger
---Insertar datos en la table Dept
+
+-- INSERT
+-- Insertar datos en la table Dept
 INSERT INTO Dept(Dept_No,DNombre,Loc) VALUES(10,'CONTABILIDAD','ELCHE');
 INSERT INTO Dept(Dept_No,DNombre,Loc) VALUES(20,'INVESTIGACIÓN','MADRID');
 INSERT INTO Dept(Dept_No,DNombre,Loc) VALUES(30,'VENTAS','BARCELONA');
 INSERT INTO Dept(Dept_No,DNombre,Loc) VALUES(40,'PRODUCCIÓN','SALAMANCA');
-Ejercicios Trigger
---Insertar datos en la tabla Emp
+
+-- Insertar datos en la tabla Emp
 INSERT INTO Emp( Emp_No, Apellido, Oficio, Dir, Fecha_Alt, Salario, Comision, Dept_No) VALUES
 (7369,'SANCHEZ','EMPLEADO',7902,'1980-12-17',10400,0,20),
 (7499,'ARROYO','VENDEDOR',7698,'1981-02-22',208000,39000,30),
@@ -88,8 +83,7 @@ INSERT INTO Emp( Emp_No, Apellido, Oficio, Dir, Fecha_Alt, Salario, Comision, De
 (7119,'SERRA','DIRECTOR',7839,'1983-11-19',225000,39000,20),
 (7322,'GARCIA','EMPLEADO',7119,'1982-10-12',129000,0,20);
 
-Ejercicios Trigger
---Insertar datos en la tabla Hospital
+-- Insertar datos en la tabla Hospital
 INSERT INTO Hospital(Hospital_Cod,Nombre,Direccion,Telefono, Num_Cama)
 VALUES(19,'Provincial','O Donell 50','964-4256',502);
 INSERT INTO Hospital(Hospital_Cod,Nombre,Direccion,Telefono, Num_Cama)
@@ -98,8 +92,8 @@ INSERT INTO Hospital(Hospital_Cod,Nombre,Direccion,Telefono, Num_Cama) VALUES(22
 Paz','Castellana 1000','923-5411',412);
 INSERT INTO Hospital(Hospital_Cod,Nombre,Direccion,Telefono, Num_Cama) VALUES(45,'San
 Carlos','Ciudad Universitaria','597-1500',845);
-Ejercicios Trigger
---Insertar datos en la tabla Doctor
+
+-- Insertar datos en la tabla Doctor
 INSERT INTO Doctor(Hospital_Cod,Doctor_No,Apellido,Especialidad) VALUES(22,386,'Cabeza D.','Psiquiatría');
 INSERT INTO Doctor(Hospital_Cod,Doctor_No,Apellido,Especialidad) VALUES(22,398,'Best D.','Urología');
 INSERT INTO Doctor(Hospital_Cod,Doctor_No,Apellido,Especialidad) VALUES(19,435,'López A.','Cardiología');
@@ -108,8 +102,8 @@ INSERT INTO Doctor(Hospital_Cod,Doctor_No,Apellido,Especialidad) VALUES(45,522,'
 INSERT INTO Doctor(Hospital_Cod,Doctor_No,Apellido,Especialidad) VALUES(18,585,'Miller G.','Ginecología');
 INSERT INTO Doctor(Hospital_Cod,Doctor_No,Apellido,Especialidad) VALUES(45,607,'Chuki P.','Pediatría');
 INSERT INTO Doctor(Hospital_Cod,Doctor_No,Apellido,Especialidad) VALUES(18,982,'Cajal R.','Cardiología');
-Ejercicios Trigger
---Insertar datos en la tabla Sala
+
+-- Insertar datos en la tabla Sala
 INSERT INTO SALA VALUES(1,22,'Recuperación',10);
 INSERT INTO SALA VALUES(1,45,'Recuperación',15);
 INSERT INTO SALA VALUES(2,22,'Maternidad',34);
@@ -120,10 +114,10 @@ INSERT INTO SALA VALUES(4,18,'Cardiología',53);
 INSERT INTO SALA VALUES(4,45,'Cardiología',55);
 INSERT INTO SALA VALUES(6,19,'Psiquiátricos',67);
 INSERT INTO SALA VALUES(6,22,'Psiquiátricos',118);
-Ejercicios Trigger
---Insertar datos en la tabla Plantilla
-INSERT INTO Plantilla(Hospital_Cod,Sala_Cod,Empleado_No,Apellido, Funcion, T, Salario)
-VALUES
+TRUNCATE sala;
+
+-- Insertar datos en la tabla Plantilla
+INSERT INTO Plantilla(Hospital_Cod,Sala_Cod,Empleado_No,Apellido, Funcion, T, Salario) VALUES
 (22,6,1009,'Higueras D.','Enfermera','T',200500),
 (45,4,1280,'Amigo R.','Interino','N',221000),
 (19,6,3106,'Hernández','Enfermero','T',275000),
@@ -134,9 +128,9 @@ VALUES
 (22,6,8422,'Bocina G.','Enfermero','M',183800),
 (45,1,8526,'Frank H.','Enfermera','T',252200),
 (22,2,9901,'Núñez C.','Interino','M',221000);
-truncate plantilla;
-Ejercicios Trigger
---Insertar datos en la tabla Enfermo
+TRUNCATE plantilla;
+
+-- Insertar datos en la tabla Enfermo
 INSERT INTO Enfermo(Inscripcion,Apellido,Direccion,Fecha_Nac,S,NSS)
 VALUES
 (10995,'Laguía M.','Goya 20','16-may-56','M',280862422),
@@ -149,201 +143,174 @@ VALUES
 (63827,'Ruiz P.','Ezquerdo 103','26-dic-80','M',100973253),
 (64823,'Fraiser A.','Soto 3','10-jul-80','F',285201776),
 (74835,'Benítez E.','Argentina','05-oct-57','M',154811767);
-Ejercicios Trigger
 
-1) Crear un Trigger que borre en cascada sobre la tabla relacionada cuando borremos una sala.
-Mostrar el registro borrado al ejecutar el Trigger.
-
-truncate registrosborrados;
-create table registrosBorrados (
-id int auto_increment,
-descripcion varchar (255), primary key (id));
-
-
+/*1) Crear un Trigger que borre en cascada sobre la tabla relacionada cuando borremos una sala.
+Mostrar el registro borrado al ejecutar el Trigger.	*/
 delimiter $$
-drop trigger if exists borradoSala$$
-create trigger borradoSala after delete on sala 
+drop trigger if exists borrado$$
+create trigger borrado after delete on sala 
 for each row
 begin
-declare emp_no int;
-declare done int default false;
+	declare emp_no int;
+	declare done int default false;
 
-declare cursor1 cursor for 
+	declare cursor1 cursor for 
 	select Empleado_No from plantilla where Sala_Cod = old.Sala_Cod;
 
-declare continue handler for not found set done = true;
+	declare continue handler for not found set done = true;
 
-open cursor1;
+	open cursor1;
 
-loop_empleado: LOOP
-	fetch cursor1 into emp_no;
-if done then
-	leave loop_empleado;
-end if;
+		loop_empleado: LOOP
+			fetch cursor1 into emp_no;
+			if done then
+				leave loop_empleado;
+			end if;
 
-insert into registrosborrados(descripcion)
-values (concat('Se ha eliminado la sala con codigo:' , old.sala_cod, '. Numero de empleado afectado: ', emp_no));
-end loop loop_empleado;
-close cursor1;
+			insert into registro_borrado(descripcion)
+			values (concat('Se ha eliminado la sala con codigo:' , old.sala_cod, '. Numero de empleado afectado: ', emp_no));
+		end loop loop_empleado;
+	close cursor1;
 
-DELETE FROM plantilla 
-WHERE
-    sala_cod = old.sala_cod;
-end
-$$
+	DELETE FROM plantilla WHERE sala_cod = old.sala_cod;
+end $$
 delimiter ;
-DELETE FROM Sala 
-WHERE
-    sala_cod = 1;
+
+DELETE FROM Sala WHERE sala_cod = 2;
 
 
 
-Ejercicios Trigger
-2) Crear un Trigger que se active cuando Actualicemos alguna sala del hospital, modificando sus
-tablas relacionadas. Mostrar el registro Actualizado.
-
-create table registrosActualizados (
-id int auto_increment,
-descripcion varchar (255), primary key (id));
-
-
-delimiter $$
-    
-create trigger actualizarSala after update on sala
-for each row
-begin
-
-if old.sala_cod != new.sala_cod or old.hospital_cod != new.hospital_cod or old.nombre != new.nombre 
-or old.num_cam != new.num_cam then
-
-insert into registrosactualizados(descripcion)
-values (concat('Se ha modificado la sala con codigo: ' , old.sala_cod, ' por numero de sala: '
-, new.sala_cod,' se cambio el nombre de ',' el codigo de hospital : ',old.hospital_cod,' se cambio por ',
-new.hospital_cod,' el nombre de la sala : ',old.nombre,' por : ',new.nombre));
-
-update plantilla set plantilla.sala_cod = new.sala_cod where plantilla.sala_cod=old.sala_cod;
-end if;
-
-    end
-    $$
-    
-   delimiter ;
-   
-   update sala set sala_cod=10 where sala_cod = 1;
-   
-   select * from registrosactualizados;
-
-
-Ejercicios Trigger
-3) Crear un Trigger que se active al eliminar un registro en la tabla hospital y modifique las tablas
-correspondientes.
-
-delimiter $$
-    
-    create trigger eliminarRegisHospital after delete on hospital
-    for each row
-    begin
-    
-   
-
-    end
-    $$
-    
-   delimiter ;
-
-
-
-Ejercicios Trigger
-4) Crear un Trigger para controlar la inserción de empleados, cuando insertemos un empleado se
-copiarán datos sobre la inserción en una tabla llamada Control_BD. Los datos que se copiarán son el
-Número de empleado, El usuario que está realizando la operación, la fecha y el tipo de operación.
-
-
-delimiter $$
-    
-    create trigger insercionEmpleados after insert on emp
-    for each row
-    begin
-    
-   
-
-    end
-    $$
-    
-   delimiter ;
-
-
-
-
-Ejercicios Trigger
-5) Crear un Trigger que actúe cuando se modifique la tabla hospital y sobre todas las tablas con las
-que esté relacionadas.
-
-
-
-
-
-Ejercicios Trigger
-6) Crear un Trigger en la tabla plantilla. Cuando actualicemos la tabla plantilla, debemos comprobar
-que el hospital que actualizamos existe, si intentamos actualizar el código de hospital, no podremos
-hacerlo si no existe relación con algún código de hospital. Realizar el mismo Trigger para las tablas
-relacionadas con Hospital.
-
-
-
-
-
-
-Ejercicios Trigger
-7) Modificar el Trigger del ejercicio 4, utilizando transacciones y control de errores, si la operación
-es correcta, mostrará un mensaje positivo, si la operación no es correcta mostrará el error y un
-mensaje que indique que no se ha llevado a cabo la operación.
-
-DELIMITER //
-CREATE TRIGGER DAR_ALTA
-AFTER INSERT ON EMP
+/*2) Crear un Trigger que se active cuando Actualicemos alguna sala del hospital, modificando sus
+tablas relacionadas. Mostrar el registro Actualizado.	*/
+DELIMITER $$
+CREATE TRIGGER mostrarRegistroSalaActualizado AFTER UPDATE ON sala
 FOR EACH ROW
 BEGIN
-DECLARE exit handler for sqlexception
-BEGIN
-ROLLBACK;
-SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Error al insertar
-empleado. Operación abortada.';
-END;
-DECLARE exit handler for sqlwarning
-BEGIN
-ROLLBACK;
-SIGNAL SQLSTATE '01000' SET MESSAGE_TEXT = 'Advertencia: Ha
-ocurrido una advertencia al insertar el empleado.';
-END;
-START TRANSACTION;
-INSERT INTO Control_BD (EMP_NO, USUARIO, FECHA, OPERACION)
-VALUES (NEW.EMP_NO, USER(), NOW(), 'INSERCION');
-COMMIT;
-END//
+	UPDATE plantilla set plantilla.Sala_cod = NEW.Sala_cod WHERE plantilla.Sala_cod = OLD.Sala_cod;
+END$$
 DELIMITER ;
-INSERT INTO EMP(EMP_NO, APELLIDO, OFICIO, DIR, FECHA_ALT,
-SALARIO, COMISION, DEPT_NO)
-VALUES(8741,'ZEGARRA','EMPLEADO',7902,'30/05/2015',15520,0,20)
+
+UPDATE sala set Nombre = "infaltil" WHERE Sala_cod = 1;
+
+
+/*3) Crear un Trigger que se active al eliminar un registro en la tabla hospital y modifique las tablas
+correspondientes.	*/
+DELIMITER $$
+CREATE TRIGGER eliminarRegistroEnHospital AFTER DELETE ON sala
+FOR EACH ROW
+BEGIN
+	DELETE FROM Plantilla  WHERE Hospital_Cod = OLD.Hospital_Cod;
+    DELETE FROM Doctor WHERE Hospital_Cod = OLD.Hospital_Cod;
+    DELETE FROM Sala WHERE Hospital_Cod = OLD.Hospital_Cod;
+END$$
+DELIMITER ;
+
+DELETE FROM hopital WHERE Nombre = "Provincial";
+
+
+/*4) Crear un Trigger para controlar la inserción de empleados, cuando insertemos un empleado se
+copiarán datos sobre la inserción en una tabla llamada Control_BD. Los datos que se copiarán son el
+Número de empleado, El usuario que está realizando la operación, la fecha y el tipo de operación.	*/
+CREATE TABLE Control_BD (
+id INT AUTO_INCREMENT,
+emp_no INT,
+usuario VARCHAR(50),
+fecha DATE,
+tipo_op VARCHAR(100)
+);
+
+DELIMITER $$
+CREATE TRIGGER insertConControl AFTER INSERT ON Emp
+FOR EACH ROW
+BEGIN
+	INSERT INTO Control_BD (emp_no, usuario, fecha, tipo_op) VALUES 
+    (NEW.Emp_no, USER(), curdate(),'INSEERT');
+END$$
+DELIMITER ;
+
+INSERT INTO Emp VALUES (10,'MAGRO','empleado',7902,curdate(),10.0000,0,22);
+
+/*5) Crear un Trigger que actúe cuando se modifique la tabla hospital y sobre todas las tablas con las
+que esté relacionadas.	*/
+DELIMITER $$
+CREATE TRIGGER actualizarHopital AFTER UPDATE ON Hospital
+FOR EACH ROW
+BEGIN
+	UPDATE Plantilla SET Hospital_Cod = NEW.Hospital_Cod WHERE Hospital_Cod = OLD.Hospital_Cod;
+    UPDATE Doctor SET Hospital_Cod = NEW.Hospital_Cod WHERE Hospital_Cod = OLD.Hospital_Cod;
+    UPDATE Sala SET Hospital_Cod = NEW.Hospital_Cod WHERE Hospital_Cod = OLD.Hospital_Cod;
+END$$
+DELIMITER ;
+
+UPDATE Hospital SET Hospital_Cod = 20 WHERE Hospital_Cod = 19;
+
+/*6) Crear un Trigger en la tabla plantilla. Cuando actualicemos la tabla plantilla, debemos comprobar
+que el hospital que actualizamos existe, si intentamos actualizar el código de hospital, no podremos
+hacerlo si no existe relación con algún código de hospital. Realizar el mismo Trigger para las tablas
+relacionadas con Hospital.	*/
+DELIMITER $$
+CREATE TRIGGER actualizarPlantilla BEFORE UPDATE ON Plantilla
+FOR EACH ROW
+BEGIN
+	DECLARE CodHospitalExist INT DEFAULT (SELECT COUNT(*) FROM Hospital 
+    WHERE Hospital_Cod = NEW.Hospital_Cod);
+    
+    IF CodHospitalExist = 0 THEN
+		SIGNAL SQLSTATE '45000'
+        SET MESSAGE_TEXT = 'El codigo del hospital no existe';
+    END IF;
+END$$
+DELIMITER ;
+
+UPDATE Plantilla SET Hospital_Cod = 1 WHERE Hospital_Cod = 20;
+
+
+/*7) Modificar el Trigger del ejercicio 4, utilizando transacciones y control de errores, si la operación
+es correcta, mostrará un mensaje positivo, si la operación no es correcta mostrará el error y un
+mensaje que indique que no se ha llevado a cabo la operación.	*/
+DELIMITER $$
+CREATE TRIGGER borrarEnCascada BEFORE DELETE ON sala
+FOR EACH ROW
+BEGIN
+	
+END$$
+DELIMITER ;
 
 
 
+/*8) Crear un Trigger que guarde los datos en la tabla controlTrigger cuando se realice la baja de un
+empleado.	*/
+CREATE TABLE controlTrigger (
+id INT AUTO_INCREMENT,
+emp_no INT,
+usuario VARCHAR(50),
+fecha DATE,
+tipo_op VARCHAR(100)
+);
 
-Ejercicios Trigger
-8) Crear un Trigger que guarde los datos en la tabla controlTrigger cuando se realice la baja de un
-empleado.
+DELIMITER $$
+CREATE TRIGGER bajaEmpleado AFTER DELETE ON sala
+FOR EACH ROW
+BEGIN
+	INSERT INTO controlTrigger (emp_no, usuario, fecha, tipo_op) VALUES 
+    (OLD.Emp_no, USER(), curdate(),'DELETE');
+END$$
+DELIMITER ;
 
+DELETE FROM Emp WHERE emp_no =20;
 
-
-
-
-
-
-Ejercicios Trigger
-9) Crear un Trigger que guarde los datos en la tabla ControlTrigger cuando se realice una
+/*9) Crear un Trigger que guarde los datos en la tabla ControlTrigger cuando se realice una
 modificación en un empleado. Guardar la hora de la actualización en un campo aparte en la tabla
-ControlTrigger. (Añadir un campo)
+ControlTrigger. (Añadir un campo)	*/
+ALTER TABLE controlTrigger ADD COLUMN hora TIME;
 
+DELIMITER $$
+CREATE TRIGGER modificarEmpleado BEFORE UPDATE ON Plantilla
+FOR EACH ROW
+BEGIN
+	INSERT INTO controlTrigger (emp_no, usuario, fecha, tipo_op, hora) 
+    VALUES (OLD.Emp_no, USER(), curdate(),'UPDATE', CURTIME());
+END$$
+DELIMITER ;
 
-
-
+UPDATE sala SET puesto = 'Auxiliar Enfermeria' WHERE emp_no = 10;
